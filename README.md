@@ -4,6 +4,8 @@
 ## チーム D_2201
 <img src="https://jphacks.github.io/D_2201/data/とっとこ公大郎_背景透過.png" height="100px">  
 
+[![ License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md) [![pages-build-deployment](https://github.com/jphacks/D_2201/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jphacks/D_2201/actions/workflows/pages/pages-build-deployment)(開発用)
+
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
 ### 製品説明（具体的な製品の説明）
