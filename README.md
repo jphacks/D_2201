@@ -1,7 +1,8 @@
-# サンプル（プロダクト名）
-Look for Stars
+# Look for Stars
 
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2022/08/JPHACKS2022_ogp.jpg)](https://www.youtube.com/watch?v=LUPQFB4QyVo)
+![Look for Stars](https://jphacks.github.io/D_2201/data/Look_for_Stars_4000-1200.png)
+## チーム D_2201
+<img src="https://jphacks.github.io/D_2201/data/とっとこ公大郎_背景透過.png" height="100px">  
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
