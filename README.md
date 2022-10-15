@@ -20,6 +20,10 @@
 
 ## 開発技術
 ### 活用した技術
+* python
+* opencv
+* flutter
+
 #### API・データ
 * 
 * 
