@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon" href="map-ogp.png" />
+    <meta property="og:image" content="map-ogp.png" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>testdisp</title>
+    <link rel="stylesheet" href="https://code4sabae.github.io/leaflet-mjs/leaflet-grayscale.css">
+    <script type="module">
+        import L from "https://code4sabae.github.io/leaflet-mjs/leaflet.mjs";
+        import { CSV } from "https://js.sabae.cc/CSV.js";
+        import { toHalf } from "https://js.sabae.cc/toHalf.js";
+
+        const map = L.map("mapid");
+        // set 国土地理院地図 https://maps.gsi.go.jp/development/ichiran.html
+        L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+            attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>"',
+            maxZoom: 18,
+        }).addTo(map);
+
+        const toLL = ll => [ll[1], ll[0]];
+
+        const lls = [];
+
+        // ポリゴン
+        const url = "https://jphacks.github.io/D_2201/data/osaka.geojson";
+        const geojson = await (await fetch(url)).json();
+        let idx = 0;
+        const towns = [];
+        for (const f of geojson.features) {
+            console.log(f.properties.score);
+            const hue = (f.properties.score) % 360+60;
+            const style = { color: `hsl(${hue},90%,40%)`, opacity: 1.0, fillOpacity: .1 };
+            const geo = L.geoJSON(f, { style });
+            geo.addTo(map);
+            lls.push(toLL(f.geometry.coordinates[0][0]));
+            //geo.bindPopup(f.properties.MOJI);
+            geo.data = f;
+            towns.push(geo);
+        }
+        if (lls.length) {
+            map.fitBounds(lls);
+        }
+    </script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            word-wrap: break-word;
+            --main-color: #245fff;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            padding: .0em;
+            background-color: var(--main-color);
+            color: white;
+            font-size: 6vw;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 3vw;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin: 0;
+            padding: .3em;
+            background-color: var(--main-color);
+            color: white;
+            font-size: 3vw;
+        }
+
+        /* map */
+        #mapid {
+            width: 100%;
+            height: 70vh;
+        }
+
+        /* footer */
+        #debug {
+            border: 1px solid black;
+            margin: 1em;
+            padding: 0.5em;
+            font-size: 70%;
+        }
+
+        #src {
+            margin: 1em 0 .5em 0;
+        }
+
+        a {
+            color: gray !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id=title>test</h1>
+    <div class=subtitle>（開発中）</div>
+    <div id="mapid"></div>
+
+    <div id="link">
+        <div id="src">
+            <div>DATA:
+                <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a>
+                <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a>
+                <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> )
+            </div>
+            <div>LIB: <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> <a
+                    href='https://leafletjs.com/'>Leaflet</a> (<a href=https://github.com/Leaflet/Leaflet>src on
+                    GitHub</a>) → <a href=https://fukuno.jig.jp/2826>leaflet.mjs</a> (<a
+                    href=https://github.com/code4sabae/leaflet-mjs>src on GitHub</a>)</div>
+            <div>APP: <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> </div>
+        </div>
+        <script type="module" src="https://js.sabae.cc/QRCode.js"></script>
+        <qr-code></qr-code>
+    </div>
+
+</body>
+
+</html>
