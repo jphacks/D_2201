@@ -2,6 +2,10 @@ import pandas as pd
 import csv
 from geojson import Polygon
 from geojson import Point, Feature, FeatureCollection, dump
+import datetime
+from dateutil import relativedelta
+import requests
+import json
 
 
 df = pd.read_csv("JLL_Data_Osaka.csv", encoding="utf-8")
@@ -34,6 +38,13 @@ sepj = 50
 dj = (poi[3]-poi[2])/sepj
 dpicj = im.shape[1]/sepj
 
+url = 'https://www.jpmap-jaxa.jp/jpmap/api/v1/rect/' #aerpsplの光学的厚さのリクエストurl
+today = datetime.date.today()
+ty = today.strftime('%Y%m%d')
+
+lastyear = today - relativedelta.relativedelta(years=1)
+ly = lastyear.strftime('%Y%m%d')
+
 ft_all = []
 for i in range(sepi):
     lat_min = poi[1] - di*(i+1)
@@ -45,6 +56,28 @@ for i in range(sepi):
         geopoly = Polygon([[(lon_min, lat_min), (lon_min, lat_max), (lon_max, lat_max), (lon_max, lat_min)]])
         img1 = imnp[int(dpici*i) : int(dpici*(i+1)), int(dpicj*j) : int(dpici*(i+j))]
         prescore = np.average(img1)
+        
+    ##エアロゾルスコア検出
+        params = {'product':'4',
+          'interval':'3',
+          'nlat': lat_max,
+          'wlon': lon_min,
+          'slat':lat_min,
+          'elon':lon_max,
+          'start':ly,
+          'end': ty }
+          
+          a = []
+          res = requests.get(url, params=params)
+          json_load = json.loads(res.text)
+          for k in range(0,13):
+            if json_load['data'][k]['value'] == -9999:
+                a.append(json_load['data'][k-1]['value'])
+            else :
+                a.append(json_load['data'][k]['value'])
+            k = k + 1
+            
+          aerosol_score = a[-1]/0.40
     
     ##建物スコア計算
         for row in range (len(df)):
