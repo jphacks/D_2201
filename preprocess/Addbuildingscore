@@ -56,8 +56,7 @@ for i in range(sepi):
         geopoly = Polygon([[(lon_min, lat_min), (lon_min, lat_max), (lon_max, lat_max), (lon_max, lat_min)]])
         img1 = imnp[int(dpici*i) : int(dpici*(i+1)), int(dpicj*j) : int(dpici*(i+j))]
         prescore = np.average(img1)
-        
-    ##エアロゾルスコア検出
+        ##エアロゾルスコア検出
         params = {'product':'4',
           'interval':'3',
           'nlat': lat_max,
@@ -67,15 +66,15 @@ for i in range(sepi):
           'start':ly,
           'end': ty }
           
-          a = []
-          res = requests.get(url, params=params)
-          json_load = json.loads(res.text)
-          for k in range(0,13):
-            if json_load['data'][k]['value'] == -9999:
-                a.append(json_load['data'][k-1]['value'])
-            else :
-                a.append(json_load['data'][k]['value'])
-            k = k + 1
+            a = []
+            res = requests.get(url, params=params)
+            json_load = json.loads(res.text)
+            for k in range(0,13):
+                if json_load['data'][k]['value'] == -9999:
+                    a.append(json_load['data'][k-1]['value'])
+                else :
+                    a.append(json_load['data'][k]['value'])
+                k = k + 1
             
           aerosol_score = a[-1]/0.40
     
