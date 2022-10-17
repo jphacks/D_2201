@@ -1,0 +1,69 @@
+import pandas as pd
+import csv
+from geojson import Polygon
+from geojson import Point, Feature, FeatureCollection, dump
+
+
+df = pd.read_csv("JLL_Data_Osaka.csv", encoding="utf-8")
+
+def Point(building):
+    
+    if '小中規模' in  building :
+        score += 3 
+    if '中層' in  building :
+        score += 5   
+    elif '中高層' in building :
+        score += 5
+    elif '中規模' in building :
+        score += 5
+    elif '駅前商業地域' in building :
+        score += 5
+    elif '高層' in building :
+        score += 10
+    elif '大規模' in  building :
+        score += 10
+    else: 
+        score += 1
+    return score
+
+print("score="+str(score)) #スコア出力
+sepi = 50
+di = (poi[1]-poi[0])/sepi
+dpici = im.shape[0]/sepi
+sepj = 50
+dj = (poi[3]-poi[2])/sepj
+dpicj = im.shape[1]/sepj
+
+ft_all = []
+for i in range(sepi):
+    lat_min = poi[1] - di*(i+1)
+    lat_max = poi[1] - di*i
+    for j in range(sepj):
+        building_score = 0
+        lon_min = poi[2] + dj*j
+        lon_max = poi[2] + dj*(j+1)
+        geopoly = Polygon([[(lon_min, lat_min), (lon_min, lat_max), (lon_max, lat_max), (lon_max, lat_min)]])
+        img1 = imnp[int(dpici*i) : int(dpici*(i+1)), int(dpicj*j) : int(dpici*(i+j))]
+        prescore = np.average(img1)
+    
+    ##建物スコア計算
+        for row in range (len(df)):
+            longitude= df.iat[row,0]
+            latitude= df.iat[row,1]
+            address = df.iat[row,4]
+            building = df.iat[row,20]
+            #print(type(longitude))
+            ##　画像の座標範囲に入っているか
+            if( lon_min <= longitude and  longitude<= lon_max): 
+                if( lat_min <= latitude and latitude<= lat_max):
+               
+            ##スコア割り当て
+                building_score = Point(building)
+                    
+        if np.isnan(prescore):
+            prescore = 0
+    ft = Feature(geometry = geopoly, properties = {'score': prescore})
+    ft_all.append(ft)
+ft_colct = FeatureCollection(ft_all)
+with open(outfile, 'w') as f:
+    dump(ft_colct, f, separators=(',', ':'))
