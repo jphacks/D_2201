@@ -66,17 +66,18 @@ for i in range(sepi):
           'start':ly,
           'end': ty }
           
-            a = []
-            res = requests.get(url, params=params)
-            json_load = json.loads(res.text)
-            for k in range(0,13):
-                if json_load['data'][k]['value'] == -9999:
-                    a.append(json_load['data'][k-1]['value'])
-                else :
-                    a.append(json_load['data'][k]['value'])
-                k = k + 1
+        a = []
+        res = requests.get(url, params=params)
+        json_load = json.loads(res.text)
+        for k in range(0,13):
+            if json_load['data'][k]['value'] == -9999:
+                a.append(json_load['data'][k-1]['value'])
+            else :
+                a.append(json_load['data'][k]['value'])
+                
+            k = k + 1
             
-          aerosol_score = a[-1]/0.40
+        aerosol_score = a[-1]/0.40
     
     ##建物スコア計算
         for row in range (len(df)):
