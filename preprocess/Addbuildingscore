@@ -8,7 +8,7 @@ import requests
 import json
 import numpy as np
 
-
+PARAM = 150
 df = pd.read_csv("JLL_Data_Osaka.csv", encoding="utf-8")
 
 def Point(building):
@@ -92,12 +92,20 @@ for i in range(sepi):
                 if( lat_min <= latitude and latitude<= lat_max):
                
             ##スコア割り当て
-                building_score = Point(building)
-                    
+                building_score = building_score + Point(building)
+                
+                
+        if(building_score>=PARAM):
+            bu_score = 0
+        else:
+            bu_score = 1 - (building_score / PARAM)
+            
+        prescore = bu_score * aerosol_score
         if np.isnan(prescore):
             prescore = 0
-    ft = Feature(geometry = geopoly, properties = {'score': prescore})
-    ft_all.append(ft)
+        
+        ft = Feature(geometry = geopoly, properties = {'score': prescore})
+        ft_all.append(ft)
 ft_colct = FeatureCollection(ft_all)
 with open(outfile, 'w') as f:
     dump(ft_colct, f, separators=(',', ':'))
