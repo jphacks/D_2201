@@ -38,4 +38,4 @@ for k in range(0,13):
         
     k = k + 1
     
-aerosol_score = a[-1]/0.40
+aerosol_score = np.exp( -2.72 * a[-1])
