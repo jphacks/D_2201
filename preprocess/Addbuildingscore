@@ -92,7 +92,7 @@ for i in range(sepi):
                 if( lat_min <= latitude and latitude<= lat_max):
                
             ##スコア割り当て
-                building_score = building_score + Point(building)
+                    building_score = building_score + Point(building)
                 
                 
         if(building_score>=PARAM):
