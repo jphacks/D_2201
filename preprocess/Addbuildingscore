@@ -39,6 +39,9 @@ sepj = 50
 dj = (poi[3]-poi[2])/sepj
 dpicj = im.shape[1]/sepj
 
+snah = int(round((poi[1]-poi[0]) / 0.1, 0)) #エアロゾルデータ取得のための縦のデータ数
+snaw = int(round((poi[3]-poi[2]) / 0.1, 0)) #エアロゾルデータ取得のための横のデータ数
+
 url = 'https://www.jpmap-jaxa.jp/jpmap/api/v1/rect/' #aerpsplの光学的厚さのリクエストurl
 today = datetime.date.today()
 ty = today.strftime('%Y%m%d')
@@ -46,47 +49,17 @@ ty = today.strftime('%Y%m%d')
 lastyear = today - relativedelta.relativedelta(years=1)
 ly = lastyear.strftime('%Y%m%d')
 
-ft_all = []
-for i in range(sepi):
-    lat_min = poi[1] - di*(i+1)
-    lat_max = poi[1] - di*i
-    for j in range(sepj):
-        building_score = 0
-        lon_min = poi[2] + dj*j
-        lon_max = poi[2] + dj*(j+1)
-        geopoly = Polygon([[(lon_min, lat_min), (lon_min, lat_max), (lon_max, lat_max), (lon_max, lat_min)]])
-        img1 = imnp[int(dpici*i) : int(dpici*(i+1)), int(dpicj*j) : int(dpici*(i+j))]
-        prescore = np.average(img1)
-        ##エアロゾルスコア検出
-        
-        if lat_min % 0.01 == 0.0:
-            lat_min_round = lat_min
-        else :
-            lat_min_round = round(lat_min,1)
-            
-        if lat_max % 0.01 == 0.0:
-            lat_max_round = lat_max
-        else :
-            lat_max_round = round(lat_max,1)
-            
-        if lat_max_round == lat_min_round :
-            lat_max_round = lat_min_round + 0.1
-            
+aerosol_score = np.zeros((snah, snaw))
 
-        if lon_min % 0.01 == 0.0:
-            lon_min_round = lon_min
-        else :
-            lon_min_round = round(lon_min,1)
-            
-        if lon_max % 0.01 == 0.0:
-            lon_max_round = lon_max
-        else :
-            lon_max_round = round(lon_max,1)
-            
-        if lon_max_round == lon_min_round :
-            lon_max_round = lon_min_round + 0.1
-                    
-        params = {'product':'4',
+#エアロゾルスコア
+for k in range(snah):
+    lat_min_round = poi[1] - 0.1* (k+1)
+    lat_max_round = poi[1] -0.1* k
+    for l in range(snaw):
+        lon_min_round = poi[2] + 0.1* l
+        lon_max_round = poi[2] + 0.1* (l + 1)
+        
+        params = {'product':'4',  
           'interval':'3',
           'nlat': lat_max_round,
           'wlon': lon_min_round,
@@ -94,95 +67,18 @@ for i in range(sepi):
           'elon':lon_max_round,
           'start':ly,
           'end': ty }
-          
+    
         a = []
         res = requests.get(url, params=params)
         json_load = json.loads(res.text)
-        for k in range(0,13):
-            if json_load['data'][k]['value'] == -9999:
-                a.append(json_load['data'][k-1]['value'])
-            else :
-                a.append(json_load['data'][k]['value'])
-                
-            k = k + 1
+        for m in range(13):
             
-        aerosol_score = np.exp( -2.72 * a[-1])
-    
-    ##建物スコア計算
-        for row in range (len(df)):
-            longitude= df.iat[row,0]
-            latitude= df.iat[row,1]
-            address = df.iat[row,4]
-            building = df.iat[row,20]
-            #print(type(longitude))
-            ##　画像の座標範囲に入っているか
-            if( lon_min <= longitude and  longitude<= lon_max): 
-                if( lat_min <= latitude and latitude<= lat_max):
-               
-            ##スコア割り当て
-                    building_score = building_score + Point(building)
-                
-                
-        if(building_score>=PARAM):
-            bu_score = 0
-        else:
-            bu_score = 1 - (building_score / PARAM)
-            
-        prescore = bu_score * aerosol_score
-        if np.isnan(prescore):
-            prescore = 0
-        
-        ft = Feature(geometry = geopoly, properties = {'score': prescore})
-        ft_all.append(ft)
-ft_colct = FeatureCollection(ft_all)
-with open(outfile, 'w') as f:
-    dump(ft_colct, f, separators=(',', ':'))import pandas as pd
-import csv
-from geojson import Polygon
-from geojson import Point, Feature, FeatureCollection, dump
-import datetime
-from dateutil import relativedelta
-import requests
-import json
-import numpy as np
-
-PARAM = 150
-df = pd.read_csv("JLL_Data_Osaka.csv", encoding="utf-8")
-
-def Point(building):
-    
-    if '小中規模' in  building :
-        score += 3 
-    if '中層' in  building :
-        score += 5   
-    elif '中高層' in building :
-        score += 5
-    elif '中規模' in building :
-        score += 5
-    elif '駅前商業地域' in building :
-        score += 5
-    elif '高層' in building :
-        score += 10
-    elif '大規模' in  building :
-        score += 10
-    else: 
-        score += 1
-    return score
-
-print("score="+str(score)) #スコア出力
-sepi = 50
-di = (poi[1]-poi[0])/sepi
-dpici = im.shape[0]/sepi
-sepj = 50
-dj = (poi[3]-poi[2])/sepj
-dpicj = im.shape[1]/sepj
-
-url = 'https://www.jpmap-jaxa.jp/jpmap/api/v1/rect/' #aerpsplの光学的厚さのリクエストurl
-today = datetime.date.today()
-ty = today.strftime('%Y%m%d')
-
-lastyear = today - relativedelta.relativedelta(years=1)
-ly = lastyear.strftime('%Y%m%d')
+            if json_load['data'][m]['value'] == -9999:
+                a.append(json_load['data'][m-1]['value'])
+            else:
+                a.append(json_load['data'][m]['value']) 
+            print(a)
+        aerosol_score[k][l] = np.exp(-2.72 * a[-1])
 
 ft_all = []
 for i in range(sepi):
@@ -195,29 +91,9 @@ for i in range(sepi):
         geopoly = Polygon([[(lon_min, lat_min), (lon_min, lat_max), (lon_max, lat_max), (lon_max, lat_min)]])
         img1 = imnp[int(dpici*i) : int(dpici*(i+1)), int(dpicj*j) : int(dpici*(i+j))]
         prescore = np.average(img1)
-        ##エアロゾルスコア検出
-        params = {'product':'4',
-          'interval':'3',
-          'nlat': lat_max,
-          'wlon': lon_min,
-          'slat':lat_min,
-          'elon':lon_max,
-          'start':ly,
-          'end': ty }
           
-        a = []
-        res = requests.get(url, params=params)
-        json_load = json.loads(res.text)
-        for k in range(0,13):
-            if json_load['data'][k]['value'] == -9999:
-                a.append(json_load['data'][k-1]['value'])
-            else :
-                a.append(json_load['data'][k]['value'])
-                
-            k = k + 1
-            
-        aerosol_score = np.exp( -2.72 * a[-1])
-    
+
+
     ##建物スコア計算
         for row in range (len(df)):
             longitude= df.iat[row,0]
@@ -232,13 +108,31 @@ for i in range(sepi):
             ##スコア割り当て
                     building_score = building_score + Point(building)
                 
-                
+        if i>=0 and i<=11:
+            m=0
+        elif i>=12 and i<=24:
+            m=1
+        elif i>=25 and i<=36:
+            m=2
+        else:
+            m=3
+
+        if j>=0 and j<=11:
+           n=0
+        elif j>=12 and j<=24:
+            n=1
+        elif j>=25 and j<=36:
+            n=2
+        else:
+            n=3
+        
+                   
         if(building_score>=PARAM):
             bu_score = 0
         else:
             bu_score = 1 - (building_score / PARAM)
             
-        prescore = bu_score * aerosol_score
+        prescore = bu_score * aerosol_score[m][n]
         if np.isnan(prescore):
             prescore = 0
         
