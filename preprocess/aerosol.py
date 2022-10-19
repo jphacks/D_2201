@@ -52,11 +52,6 @@ for i in range(sepi):
         if lon_max_round == lon_min_round :
             lon_max_round = lon_min_round + 0.1
         
-        print('lat_min_round = ', lat_min_round)
-        print('lat_max_round = ', lat_max_round)
-        print('lon_min_round = ', lon_min_round)
-        print('lon_max_round = ', lon_max_round)
-        
         ##エアロゾルスコア検出
         params = {'product':'4',
           'interval':'3',
@@ -77,8 +72,6 @@ for i in range(sepi):
             else :
                 a.append(json_load['data'][k]['value'])   
             k = k + 1
-            
-        print(a)
             
         aerosol_score = np.exp( -2.72 * a[-1])
         a.clear
