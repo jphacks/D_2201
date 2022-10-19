@@ -14,9 +14,6 @@ dj = (poi[3]-poi[2])/sepj
 snah = int(round((poi[1]-poi[0]) / 0.1, 0)) #エアロゾルデータ取得のための縦のデータ数
 snaw = int(round((poi[3]-poi[2]) / 0.1, 0)) #エアロゾルデータ取得のための横のデータ数
 
-print('snah = ',snah)
-print('snaw = ',snaw)
-
 url = 'https://www.jpmap-jaxa.jp/jpmap/api/v1/rect/' #aerpsplの光学的厚さのリクエストurl
 today = datetime.date.today()
 ty = today.strftime('%Y%m%d')
@@ -54,5 +51,3 @@ for k in range(snah):
                 a.append(json_load['data'][m]['value']) 
             print(a)
         aerosol_score[k][l] = np.exp(-2.72 * a[-1])
-
-print(aerosol_score)
