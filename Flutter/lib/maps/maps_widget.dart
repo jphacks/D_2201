@@ -1,9 +1,69 @@
-import '../flutter_flow/flutter_flow_theme.dart';
+mport '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
+import 'package:flutter/material.dart';
+import 'package:open_weather_api_client/open_weather_api_client.dart';
+
+class Example1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () async {
+              // Setting up the weather factory
+              CurrentWeatherFactory factory = CurrentWeatherFactory(
+                apiKey: "b458648f89ed5c73cf71c630a8f31e47",
+                settings: UnitSettings(
+                  windSpeedUnit: WindSpeedUnit.Knots,
+                ),
+                cityName: "Osaka",
+              );
+
+              // Requesting the weather
+              RequestResponse<CurrentWeather?> result =
+                  await factory.getWeather();
+
+              // Checking if the request was successful
+              if (result.requestStatus == RequestStatus.Successful) {
+                // Printing the city name from the server
+                print(result.response!.cityName);
+                // Printing the temperature
+                print(result.response!.temp);
+                // Printing the weather type
+                print(result.response!.weatherType);
+              } else {
+                // Printing the error that occurred
+                print("Error of type ${result.requestStatus} occurred");
+              }
+            },
+            child: Container(
+              width: 200,
+              height: 100,
+              alignment: Alignment.center,
+              color: Colors.green,
+              child: Text(
+                "Get Weather at London",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class MapsWidget extends StatefulWidget {
   const MapsWidget({Key? key}) : super(key: key);
