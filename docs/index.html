@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="apple-touch-icon" href="map-ogp.png" />
-    <meta property="og:image" content="map-ogp.png" />
+    <link rel="apple-touch-icon" href="https://jphacks.github.io/D_2201/data/%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3_%E6%98%9F.png" />
+    <meta property="og:image" content="https://jphacks.github.io/D_2201/data/%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3_%E6%98%9F.png" />
     <meta name="format-detection" content="telephone=no" />
     <title>testdisp</title>
     <link rel="stylesheet" href="https://code4sabae.github.io/leaflet-mjs/leaflet-grayscale.css">
@@ -15,7 +15,6 @@
         import { toHalf } from "https://js.sabae.cc/toHalf.js";
 
         const map = L.map("mapid");
-        // set 国土地理院地図 https://maps.gsi.go.jp/development/ichiran.html
         L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
             attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>"',
             maxZoom: 18,
@@ -45,59 +44,6 @@
             map.fitBounds(lls);
         }
     </script>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            word-wrap: break-word;
-            --main-color: #245fff;
-            text-align: center;
-        }
-
-        h1 {
-            margin: 0;
-            padding: .0em;
-            background-color: var(--main-color);
-            color: white;
-            font-size: 6vw;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 3vw;
-        }
-
-        .subtitle {
-            text-align: center;
-            margin: 0;
-            padding: .3em;
-            background-color: var(--main-color);
-            color: white;
-            font-size: 3vw;
-        }
-
-        /* map */
-        #mapid {
-            width: 100%;
-            height: 70vh;
-        }
-
-        /* footer */
-        #debug {
-            border: 1px solid black;
-            margin: 1em;
-            padding: 0.5em;
-            font-size: 70%;
-        }
-
-        #src {
-            margin: 1em 0 .5em 0;
-        }
-
-        a {
-            color: gray !important;
-        }
-    </style>
 </head>
 
 <body>
@@ -108,10 +54,10 @@
 
     <div id="link">
         <div id="src">
-            <div>DATA:
-                <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a>
-                <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a>
-                <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> )
+            <div>DATA:(
+                Copernicus Sentinel data 2022' for Sentinel data<a herf="https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice">Open Access</a><BR>
+                国土地理院地図<a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a>
+                )
             </div>
             <div>LIB: <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> <a
                     href='https://leafletjs.com/'>Leaflet</a> (<a href=https://github.com/Leaflet/Leaflet>src on
@@ -120,9 +66,63 @@
             <div>APP: <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> </div>
         </div>
         <script type="module" src="https://js.sabae.cc/QRCode.js"></script>
-        <qr-code></qr-code>
+        <qr-code value="https://jphacks.github.io/D_2201/"></qr-code>
     </div>
 
 </body>
 
 </html>
+
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        word-wrap: break-word;
+        --main-color: #245fff;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 0;
+        padding: .0em;
+        background-color: var(--main-color);
+        color: white;
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1vw;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin: 0;
+        padding: .3em;
+        background-color: var(--main-color);
+        color: white;
+        font-size: 1vw;
+    }
+
+    /* map */
+    #mapid {
+        width: 100%;
+        height: 70vh;
+    }
+
+    /* footer */
+    #debug {
+        border: 1px solid black;
+        margin: 1em;
+        padding: 0.5em;
+        font-size: 70%;
+    }
+
+    #src {
+        margin: 1em 0 .5em 0;
+    }
+
+    a {
+        color: gray !important;
+    }
+</style>
