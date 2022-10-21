@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="apple-touch-icon" href="https://jphacks.github.io/D_2201/data/%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3_%E6%98%9F.png" />
     <meta property="og:image" content="https://jphacks.github.io/D_2201/data/%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3_%E6%98%9F.png" />
     <meta name="format-detection" content="telephone=no" />
@@ -26,13 +25,13 @@
         const lls = [];
 
         // ポリゴン
-        const url = "https://jphacks.github.io/D_2201/data/osaka.geojson";
+        const url = "https://jphacks.github.io/D_2201/data/osaka-data2socre.geojson";
         const geojson = await (await fetch(url)).json();
         let idx = 0;
         const towns = [];
         for (const f of geojson.features) {
             console.log(f.properties.score);
-            const hue = (f.properties.score*3) % 360+60;
+            const hue = 270 - (f.properties.score*270);
             const style = { color: `hsl(${hue},90%,40%)`, opacity: 1.0, fillOpacity: .1 };
             const geo = L.geoJSON(f, { style });
             geo.addTo(map);
@@ -51,8 +50,6 @@
 
     <h1 id=title>大阪区域　簡易スコア表示</h1>
     <div class=subtitle>（開発用可視化ツール）</div>
-    <a href="https://jphacks.github.io/D_2201/map-data.html" class="btn btn-secondary" tabindex="-1" role="button">M(data)</a>
-    <a href="https://jphacks.github.io/D_2201/map-img.html" class="btn btn-secondary" tabindex="-1" role="button">M(img)</a>
     <div id="mapid"></div>
 
     <div id="link">
@@ -71,7 +68,6 @@
         <script type="module" src="https://js.sabae.cc/QRCode.js"></script>
         <qr-code value="https://jphacks.github.io/D_2201/"></qr-code>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 
