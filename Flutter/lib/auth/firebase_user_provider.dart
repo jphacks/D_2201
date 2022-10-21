@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'auth_util.dart';
-
 class JphacksFirebaseUser {
   JphacksFirebaseUser(this.user);
   User? user;
@@ -19,7 +17,6 @@ Stream<JphacksFirebaseUser> jphacksFirebaseUserStream() => FirebaseAuth.instance
         .map<JphacksFirebaseUser>(
       (user) {
         currentUser = JphacksFirebaseUser(user);
-        updateUserJwtTimer(user);
         return currentUser!;
       },
     );

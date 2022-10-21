@@ -39,7 +39,6 @@ Future<User?> signInOrCreateAccount(
 }
 
 Future signOut() {
-  updateUserJwtTimer();
   return FirebaseAuth.instance.signOut();
 }
 
@@ -108,27 +107,13 @@ bool get currentUserEmailVerified {
   return currentUser?.user?.emailVerified ?? false;
 }
 
-/// Create a timer that periodically gets the current user's JWT Token,
-/// since Firebase generates a new token every hour.
-Timer? _jwtTimer;
+/// Create a Stream that listens to the current user's JWT Token, since Firebase
+/// generates a new token every hour.
 String? _currentJwtToken;
-Future updateUserJwtTimer([User? user]) async {
-  _jwtTimer?.cancel();
-  // Clear the JWT token and return if the user is not logged in.
-  if (user == null) {
-    _currentJwtToken = null;
-    return;
-  }
-  // Update the user's JWT token immediately and then every hour
-  // based on the [currentUser].
-  try {
-    _currentJwtToken = await user.getIdToken();
-    _jwtTimer = Timer.periodic(
-      Duration(hours: 1),
-      (_) async => _currentJwtToken = await currentUser?.user?.getIdToken(),
-    );
-  } catch (_) {}
-}
+final jwtTokenStream = FirebaseAuth.instance
+    .idTokenChanges()
+    .map((user) async => _currentJwtToken = await user?.getIdToken())
+    .asBroadcastStream();
 
 // Set when using phone verification (after phone number is provided).
 String? _phoneAuthVerificationCode;
