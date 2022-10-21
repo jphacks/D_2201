@@ -153,6 +153,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                     ),
 
                     PolygonLayerOptions(
+                      polygonCulling: true,
                       polygons: [
                         // サークルマーカー1設定
                         if (FFAppState().MapSelect) // 街の明かり
