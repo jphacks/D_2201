@@ -246,6 +246,67 @@ class _MapsWidgetState extends State<MapsWidget> {
                     ],
                   ),
                 ),
+      body: FlutterMap(
+        // マップ表示設定
+
+        options: MapOptions(
+          center: latLng.LatLng(34.7055051, 135.4983028),
+          zoom: 14.0,
+        ),
+
+        nonRotatedChildren: [
+          AttributionWidget.defaultWidget(
+            source: 'OpenStreetMap contributors',
+            onSourceTapped: null,
+          ),
+        ],
+
+        layers: [
+          //背景地図読み込み (Maptiler)
+          TileLayerOptions(
+            urlTemplate:
+                'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png?key=[0b81cf4555b245a6ae3ff3af63c1665d]',
+          ),
+
+          MarkerLayerOptions(
+            markers: [
+              Marker(
+                width: 100.0,
+                height: 100.0,
+                point: latLng.LatLng(34.54721681342538, 135.50656910226675),
+                builder: (ctx) => Container(
+                  child: FlutterLogo(),
+                ),
+              ),
+            ],
+          ),
+
+          // サークルマーカー設定
+          CircleLayerOptions(
+            circles: [
+              /* サークルマーカー1設定
+              CircleMarker(
+                color: Colors.indigo.withOpacity(0.9),
+                radius: 10,
+                borderColor: Colors.white.withOpacity(0.9),
+                borderStrokeWidth: 3,
+                point: latLng.LatLng(35.681, 139.760),
+              ),
+              // サークルマーカー2設定
+              CircleMarker(
+                color: Colors.teal.withOpacity(0.5),
+                radius: 15,
+                borderColor: Colors.white.withOpacity(0.5),
+                borderStrokeWidth: 5,
+                point: latLng.LatLng(35.685, 139.770),
+              ),*/
+              // サークルマーカー3設定
+              CircleMarker(
+                color: Colors.yellow.withOpacity(0.7),
+                radius: 20,
+                borderColor: Colors.white.withOpacity(0.7),
+                borderStrokeWidth: 6,
+                point: latLng.LatLng(34.7055051, 135.4983028),
               ),
             ],
           ),
