@@ -57,8 +57,12 @@
 * MapQuest提供API
 
 #### フレームワーク・ライブラリ・モジュール
-* 
-* 
+* package:flutter/material.dart
+* package:google_fonts/google_fonts.dart
+* package:flutter_map/flutter_map.dart
+* package:latlong2/latlong.dart
+* package:flutter/material.dart
+* package:open_weather_api_client/open_weather_api_client.dart 
 
 #### デバイス
 * IOS
@@ -67,8 +71,8 @@
 
 ### 独自技術
 #### ハッカソンで開発した独自機能・技術
-* 独自で開発したものの内容をこちらに記載してください
-* 特に力を入れた部分をファイルリンク、またはcommit_idを記載してください。
+* 衛星画像や土地情報から星の見えやすさを算出するプログラム
+* 提供されたAPIの地図上にスコアを可視化するレイヤー
 
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 * 
