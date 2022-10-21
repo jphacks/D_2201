@@ -5,6 +5,37 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
+import 'package:flutter/material.dart';
+import 'package:open_weather_api_client/open_weather_api_client.dart';
+
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:sprintf/sprintf.dart';
+
+//import 'constants.dart' as k;
+import 'dart:convert';
+
+const OPEN_WEATHER_MAP_API_KEY = 'b458648f89ed5c73cf71c630a8f31e47';
+const OPEN_WEATHER_MAP_DOMAIN = 'api.openweathermap.org';
+
+void main(List<String> args) async {
+  // Open Weather Mapへ通信開始
+
+  var client = http.Client();
+  var lat = 34.7055051; //緯度
+  var long = 135.4983028; //経度
+  var uri =
+      'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${OPEN_WEATHER_MAP_API_KEY}';
+  //'${k.domain}lat=${lat}&lon=${long}&appid=${OPEN_WEATHER_MAP_API_KEY}';
+  var url = Uri.parse(uri);
+  var response = await client.get(url);
+  if (response.statusCode == 200) {
+    var data = response.body;
+    print(data);
+  } else {
+    print(response.statusCode);
+  }
+}
 
 class MapsWidget extends StatefulWidget {
   const MapsWidget({Key? key}) : super(key: key);
@@ -58,14 +89,65 @@ class _MapsWidgetState extends State<MapsWidget> {
                 child: FlutterMap(
                   // マップ表示設定
                   options: MapOptions(
-                    center: latLng.LatLng(35.681, 139.767),
+                    center: latLng.LatLng(34.7055051, 135.4983028),
                     zoom: 14.0,
                   ),
+
+                  nonRotatedChildren: [
+                    AttributionWidget.defaultWidget(
+                      source: 'OpenStreetMap contributors',
+                      onSourceTapped: null,
+                    ),
+                  ],
+
                   layers: [
                     //背景地図読み込み (Maptiler)
                     TileLayerOptions(
                       urlTemplate:
                           'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png?key=[0b81cf4555b245a6ae3ff3af63c1665d]',
+                    ),
+
+                    MarkerLayerOptions(
+                      markers: [
+                        Marker(
+                          width: 100.0,
+                          height: 100.0,
+                          point: latLng.LatLng(
+                              34.54721681342538, 135.50656910226675),
+                          builder: (ctx) => Container(
+                            child: FlutterLogo(),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    CircleLayerOptions(
+                      circles: [
+                        // サークルマーカー1設定
+                        CircleMarker(
+                          color: Colors.indigo.withOpacity(0.9),
+                          radius: 10,
+                          borderColor: Colors.white.withOpacity(0.9),
+                          borderStrokeWidth: 3,
+                          point: latLng.LatLng(35.681, 139.760),
+                        ),
+                        // サークルマーカー2設定
+                        CircleMarker(
+                          color: Colors.teal.withOpacity(0.5),
+                          radius: 15,
+                          borderColor: Colors.white.withOpacity(0.5),
+                          borderStrokeWidth: 5,
+                          point: latLng.LatLng(35.685, 139.770),
+                        ),
+                        // サークルマーカー3設定
+                        CircleMarker(
+                          color: Colors.yellow.withOpacity(0.7),
+                          radius: 20,
+                          borderColor: Colors.white.withOpacity(0.7),
+                          borderStrokeWidth: 6,
+                          point: latLng.LatLng(34.7055051, 135.4983028),
+                        ),
+                      ],
                     ),
                   ],
                 ),
