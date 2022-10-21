@@ -124,21 +124,23 @@ class _MapsWidgetState extends State<MapsWidget> {
                     CircleLayerOptions(
                       circles: [
                         // サークルマーカー1設定
-                        CircleMarker(
-                          color: Colors.indigo.withOpacity(0.9),
-                          radius: 10,
-                          borderColor: Colors.white.withOpacity(0.9),
-                          borderStrokeWidth: 3,
-                          point: latLng.LatLng(35.681, 139.760),
-                        ),
+                        if (FFAppState().MapSelect) // 街の明かり
+                          CircleMarker(
+                            color: Colors.indigo.withOpacity(0.9),
+                            radius: 10,
+                            borderColor: Colors.white.withOpacity(0.9),
+                            borderStrokeWidth: 3,
+                            point: latLng.LatLng(34.708, 135.498),
+                          ),
                         // サークルマーカー2設定
-                        CircleMarker(
-                          color: Colors.teal.withOpacity(0.5),
-                          radius: 15,
-                          borderColor: Colors.white.withOpacity(0.5),
-                          borderStrokeWidth: 5,
-                          point: latLng.LatLng(35.685, 139.770),
-                        ),
+                        if (FFAppState().MapSelect == false) // 天気フィルター
+                          CircleMarker(
+                            color: Colors.teal.withOpacity(0.5),
+                            radius: 15,
+                            borderColor: Colors.white.withOpacity(0.5),
+                            borderStrokeWidth: 5,
+                            point: latLng.LatLng(34.708, 135.5),
+                          ),
                         // サークルマーカー3設定
                         CircleMarker(
                           color: Colors.yellow.withOpacity(0.7),
@@ -152,7 +154,11 @@ class _MapsWidgetState extends State<MapsWidget> {
                   ],
                 ),
               ),
-              if (FFAppState().MapSelect) // 天気フィルター
+
+              // 以下のブロックは動作確認用
+              // セレクトボタンを押しなおして画像が変更されれば正常に動作してるのでマーカーorフィルターに問題あり
+              //本番では削除
+              if (FFAppState().MapSelect) // 街の明かり
                 Container(
                   width: 100,
                   height: 100,
@@ -169,7 +175,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                     ),
                   ),
                 ),
-              if (FFAppState().MapSelect == false) //街の明かり
+              if (FFAppState().MapSelect == false) // 天気フィルター
                 Container(
                   width: 100,
                   height: 100,
@@ -186,6 +192,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                     ),
                   ),
                 ),
+
               Align(
                 alignment: AlignmentDirectional(0.8, 0.85),
                 child: Container(
