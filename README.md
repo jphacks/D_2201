@@ -13,7 +13,7 @@
 [![ License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md) [![pages-build-deployment](https://github.com/jphacks/D_2201/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jphacks/D_2201/actions/workflows/pages/pages-build-deployment)(開発用)
 
 ## 製品概要
-Look for Starsは衛星画像や土地情報から星が綺麗に見える場所を計算し、皆さんのいる場所から最適な天体観測スポットをお勧めしたり周りの人と綺麗な星空をシェアするアプリケーションです！
+「今夜、星を見に行こう」　Look for Starsは衛星画像や土地情報から星が綺麗に見える場所を計算し、皆さんのいる場所から最適な天体観測スポットをお勧めしたり周りの人と綺麗な星空をシェアするアプリケーションです。
 ### 背景(製品開発のきっかけ、課題等）
 星が見たい！でも星が綺麗に見える場所がわからないという人が、自分が今いる場所から近くにある天体観測スポットを探したり、口コミで天体観測ができる穴場を発見できたらいいなと思い開発しました。
 ### 製品説明（具体的な製品の説明）
