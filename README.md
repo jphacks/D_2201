@@ -1,12 +1,12 @@
 # Look for Stars
 
 ![Look for Stars](https://jphacks.github.io/D_2201/data/Look_for_Stars_4000-1200.png)
-<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_丸い星.png" height="200px"> 
-<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_二重円.png" height="200px"> 
-<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_同心円_黄色.png" height="200px"> 
-<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_同心円_黄色水色.png" height="200px">
-<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_土星.png" height="200px"> 
-<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_星.png" height="200px"> 
+<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_丸い星.png" height="150px"> 
+<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_二重円.png" height="150px"> 
+<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_同心円_黄色.png" height="150px"> 
+<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_同心円_黄色水色.png" height="150px">
+<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_土星.png" height="150px"> 
+<img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_星.png" height="150px"> 
 ## チーム D_2201
 <img src="https://jphacks.github.io/D_2201/data/とっとこ公大郎_背景透過.png" height="100px"> 
 
