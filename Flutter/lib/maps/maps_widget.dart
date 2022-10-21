@@ -155,7 +155,6 @@ class _MapsWidgetState extends State<MapsWidget> {
                     PolygonLayerOptions(
                       polygonCulling: true,
                       polygons: [
-                        // サークルマーカー1設定
                         if (FFAppState().MapSelect) // 街の明かり
                           Polygon(
                             points: [
@@ -170,7 +169,6 @@ class _MapsWidgetState extends State<MapsWidget> {
                             color: Color.fromARGB(255, 255, 13, 13)
                                 .withOpacity(0.5),
                           ),
-                        // サークルマーカー2設定
                         if (FFAppState().MapSelect == false) // 天気フィルター
                           Polygon(
                             points: [
@@ -185,20 +183,20 @@ class _MapsWidgetState extends State<MapsWidget> {
                             color: Color.fromARGB(255, 255, 13, 13)
                                 .withOpacity(0.5),
                           ),
-
-                        Polygon(
-                          points: [
-                            latLng.LatLng(34.708, 135.498),
-                            latLng.LatLng(34.708, 135.45),
-                            latLng.LatLng(34.71, 135.45),
-                            latLng.LatLng(34.71, 135.498),
-                          ],
-                          borderColor:
-                              Color.fromARGB(255, 255, 86, 0).withOpacity(0.5),
-                          borderStrokeWidth: 10.0,
-                          color:
-                              Color.fromARGB(255, 255, 13, 13).withOpacity(0.5),
-                        ),
+                        for (int i = 0; i < 255; i++)
+                          Polygon(
+                            points: [
+                              latLng.LatLng(34 + (i + 1) / 255, 135.498),
+                              latLng.LatLng(34 + (i + 1) / 255, 135.45),
+                              latLng.LatLng(34 + i / 255, 135.45),
+                              latLng.LatLng(34 + i / 255, 135.498),
+                            ],
+                            borderColor: Color.fromARGB(i, 255, 86, 0)
+                                .withOpacity(i / 255),
+                            borderStrokeWidth: 10.0,
+                            color: Color.fromARGB(255, 94, 13, 255)
+                                .withOpacity(i / 255),
+                          ),
                       ],
                     ),
                   ],
