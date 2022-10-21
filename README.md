@@ -55,6 +55,7 @@
 * JLL様提供土地利用データ
 * エアロゾル光学的厚さAPI(人工衛星"しきさい")
 * MapQuest提供API
+* Copernicus Sentinel data 2022' for Sentinel data
 
 #### フレームワーク・ライブラリ・モジュール
 * package:flutter/material.dart
