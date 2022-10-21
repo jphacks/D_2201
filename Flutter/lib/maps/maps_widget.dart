@@ -151,6 +151,50 @@ class _MapsWidgetState extends State<MapsWidget> {
                         ),
                       ],
                     ),
+
+                    PolygonLayerOptions(
+                      polygonCulling: true,
+                      polygons: [
+                        // サークルマーカー1設定
+                        if (FFAppState().MapSelect) // 街の明かり
+                          Polygon(
+                            points: [
+                              latLng.LatLng(34.708, 135.498),
+                              latLng.LatLng(34.708, 135.45),
+                              latLng.LatLng(34.705, 135.45),
+                              latLng.LatLng(34.705, 135.498),
+                            ],
+                            borderColor: Color.fromARGB(255, 255, 238, 0),
+                            borderStrokeWidth: 10.0,
+                            color: Color.fromARGB(255, 255, 13, 13),
+                          ),
+                        // サークルマーカー2設定
+                        if (FFAppState().MapSelect == false) // 天気フィルター
+                          Polygon(
+                            points: [
+                              latLng.LatLng(34.7, 135.498),
+                              latLng.LatLng(34.7, 135.45),
+                              latLng.LatLng(34.705, 135.45),
+                              latLng.LatLng(34.705, 135.498),
+                            ],
+                            borderColor: Color.fromARGB(255, 255, 0, 255),
+                            borderStrokeWidth: 10.0,
+                            color: Color.fromARGB(255, 255, 13, 13),
+                          ),
+
+                        Polygon(
+                          points: [
+                            latLng.LatLng(34.708, 135.498),
+                            latLng.LatLng(34.708, 135.45),
+                            latLng.LatLng(34.71, 135.45),
+                            latLng.LatLng(34.71, 135.498),
+                          ],
+                          borderColor: Color.fromARGB(255, 255, 86, 0),
+                          borderStrokeWidth: 10.0,
+                          color: Color.fromARGB(255, 255, 13, 13),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
