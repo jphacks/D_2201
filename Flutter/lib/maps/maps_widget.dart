@@ -49,6 +49,61 @@ class _MapsWidgetState extends State<MapsWidget> {
           height: MediaQuery.of(context).size.height * 1,
           child: Stack(
             children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 1,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: FlutterMap(
+                  // マップ表示設定
+                  options: MapOptions(
+                    center: latLng.LatLng(35.681, 139.767),
+                    zoom: 14.0,
+                  ),
+                  layers: [
+                    //背景地図読み込み (Maptiler)
+                    TileLayerOptions(
+                      urlTemplate:
+                          'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png?key=[0b81cf4555b245a6ae3ff3af63c1665d]',
+                    ),
+                  ],
+                ),
+              ),
+              if (FFAppState().MapSelect) // 天気フィルター
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Align(
+                    alignment: AlignmentDirectional(0, 0),
+                    child: Image.network(
+                      'https://picsum.photos/seed/777/600',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              if (FFAppState().MapSelect == false) //街の明かり
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Align(
+                    alignment: AlignmentDirectional(-0.91, -0.91),
+                    child: Image.network(
+                      'https://picsum.photos/seed/46/600',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               Align(
                 alignment: AlignmentDirectional(0.8, 0.85),
                 child: Container(
@@ -103,61 +158,6 @@ class _MapsWidgetState extends State<MapsWidget> {
                   ),
                 ),
               ),
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: FlutterMap(
-                  // マップ表示設定
-                  options: MapOptions(
-                    center: latLng.LatLng(35.681, 139.767),
-                    zoom: 14.0,
-                  ),
-                  layers: [
-                    //背景地図読み込み (Maptiler)
-                    TileLayerOptions(
-                      urlTemplate:
-                          'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png?key=[0b81cf4555b245a6ae3ff3af63c1665d]',
-                    ),
-                  ],
-                ),
-              ),
-              if (FFAppState().MapSelect) // 天気フィルター
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Image.network(
-                      'https://picsum.photos/seed/777/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              if (FFAppState().MapSelect == false) //街の明かり
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(-0.91, -0.91),
-                    child: Image.network(
-                      'https://picsum.photos/seed/46/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
             ],
           ),
         ),
