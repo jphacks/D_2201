@@ -180,7 +180,7 @@ class _MyPropertiesWidgetState extends State<MyPropertiesWidget> {
                                                 tag: valueOrDefault<String>(
                                                   listViewPropertiesRecord
                                                       .mainImage,
-                                                  'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG' +
+                                                  'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png' +
                                                       '$listViewIndex',
                                                 ),
                                                 transitionOnUserGestures: true,
@@ -200,7 +200,7 @@ class _MyPropertiesWidgetState extends State<MyPropertiesWidget> {
                                                         valueOrDefault<String>(
                                                       listViewPropertiesRecord
                                                           .mainImage,
-                                                      'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
+                                                      'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
                                                     ),
                                                     width: double.infinity,
                                                     height: 140,
