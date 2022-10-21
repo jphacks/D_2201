@@ -25,14 +25,14 @@
         const lls = [];
 
         // ポリゴン
-        const url = "https://jphacks.github.io/D_2201/data/osaka-img2score.geojson";
+        const url = "https://jphacks.github.io/D_2201/data/osaka.geojson";
         const geojson = await (await fetch(url)).json();
         let idx = 0;
         const towns = [];
         for (const f of geojson.features) {
             console.log(f.properties.score);
-            const hue = (f.properties.score*3) % 360+60;
-            const style = { color: `hsl(${hue},90%,40%)`, opacity: 1.0, fillOpacity: .1 };
+            const hue = (f.properties.score-33)*3 % 255;
+            const style = { color: `rgb(0,${hue},0)`, opacity: 1.0, fillOpacity: .1 };
             const geo = L.geoJSON(f, { style });
             geo.addTo(map);
             lls.push(toLL(f.geometry.coordinates[0][0]));
