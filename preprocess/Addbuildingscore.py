@@ -11,14 +11,9 @@ import requests
 import json
 import numpy as np
 
-im = cv2.imread('./Osaka-CopernicusSentineldata2022.jpg')
-imnp = np.array(Image.open('./Osaka-CopernicusSentineldata2022.jpg'))
-poi = [34.4,34.8,135.4,135.8]
-
-PARAM = 150
-df = pd.read_csv("JLL_Data_Osaka.csv", encoding="utf-8")
 
 def Point(building):
+    
     
     if '小中規模' in  building :
         score += 3 
@@ -36,9 +31,17 @@ def Point(building):
         score += 10
     else: 
         score += 1
+    
     return score
 
-print("score="+str(score)) #スコア出力
+im = cv2.imread('./Osaka-CopernicusSentineldata2022.jpg')
+imnp = np.array(Image.open('../Osaka-CopernicusSentineldata2022.jpg'))
+poi = [34.4,34.8,135.4,135.8]
+
+PARAM = 150
+df = pd.read_csv("JLL_Data_Osaka.csv", encoding="utf-8")
+
+#print("score="+str(score)) #スコア出力
 sepi = 50
 di = (poi[1]-poi[0])/sepi
 dpici = im.shape[0]/sepi
@@ -84,7 +87,7 @@ for k in range(snah):
                 a.append(json_load['data'][m-1]['value'])
             else:
                 a.append(json_load['data'][m]['value']) 
-            print(a)
+            
         aerosol_score[k][l] = np.exp(-2.72 * a[-1])
 
 ft_all = []
@@ -146,5 +149,5 @@ for i in range(sepi):
         ft = Feature(geometry = geopoly, properties = {'score': prescore})
         ft_all.append(ft)
 ft_colct = FeatureCollection(ft_all)
-with open(outfile, 'w') as f:
-    dump(ft_colct, f, separators=(',', ':'))
+with open('outfile.json', 'w') as f:
+    json.dump(ft_colct, f, separators=(',', ':'))
