@@ -153,6 +153,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                     ),
 
                     PolygonLayerOptions(
+                      polygonCulling: true,
                       polygons: [
                         // サークルマーカー1設定
                         if (FFAppState().MapSelect) // 街の明かり
@@ -163,9 +164,11 @@ class _MapsWidgetState extends State<MapsWidget> {
                               latLng.LatLng(34.705, 135.45),
                               latLng.LatLng(34.705, 135.498),
                             ],
-                            borderColor: Color.fromARGB(255, 255, 238, 0),
+                            borderColor: Color.fromARGB(255, 255, 238, 0)
+                                .withOpacity(0.5),
                             borderStrokeWidth: 10.0,
-                            color: Color.fromARGB(255, 255, 13, 13),
+                            color: Color.fromARGB(255, 255, 13, 13)
+                                .withOpacity(0.5),
                           ),
                         // サークルマーカー2設定
                         if (FFAppState().MapSelect == false) // 天気フィルター
@@ -176,9 +179,11 @@ class _MapsWidgetState extends State<MapsWidget> {
                               latLng.LatLng(34.705, 135.45),
                               latLng.LatLng(34.705, 135.498),
                             ],
-                            borderColor: Color.fromARGB(255, 255, 0, 255),
+                            borderColor: Color.fromARGB(255, 255, 0, 255)
+                                .withOpacity(0.5),
                             borderStrokeWidth: 10.0,
-                            color: Color.fromARGB(255, 255, 13, 13),
+                            color: Color.fromARGB(255, 255, 13, 13)
+                                .withOpacity(0.5),
                           ),
 
                         Polygon(
@@ -188,9 +193,11 @@ class _MapsWidgetState extends State<MapsWidget> {
                             latLng.LatLng(34.71, 135.45),
                             latLng.LatLng(34.71, 135.498),
                           ],
-                          borderColor: Color.fromARGB(255, 255, 86, 0),
+                          borderColor:
+                              Color.fromARGB(255, 255, 86, 0).withOpacity(0.5),
                           borderStrokeWidth: 10.0,
-                          color: Color.fromARGB(255, 255, 13, 13),
+                          color:
+                              Color.fromARGB(255, 255, 13, 13).withOpacity(0.5),
                         ),
                       ],
                     ),
