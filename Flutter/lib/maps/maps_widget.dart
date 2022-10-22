@@ -1,3 +1,5 @@
+import 'dart:html';
+import '../globals.dart' as globals;
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -11,7 +13,6 @@ import 'package:open_weather_api_client/open_weather_api_client.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:sprintf/sprintf.dart';
-
 //import 'constants.dart' as k;
 import 'dart:convert';
 
@@ -24,6 +25,7 @@ void main(List<String> args) async {
   var client = http.Client();
   var lat = 34.7055051; //緯度
   var long = 135.4983028; //経度
+
   var uri =
       'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${OPEN_WEATHER_MAP_API_KEY}';
   //'${k.domain}lat=${lat}&lon=${long}&appid=${OPEN_WEATHER_MAP_API_KEY}';
@@ -56,6 +58,8 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    List<List> csvlist = globals.csvlist;
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -183,19 +187,29 @@ class _MapsWidgetState extends State<MapsWidget> {
                             color: Color.fromARGB(255, 255, 13, 13)
                                 .withOpacity(0.5),
                           ),
-                        for (int i = 0; i < 255; i++)
+                        //csv
+                        for (int i = 0; i < 1250; i++)
                           Polygon(
                             points: [
-                              latLng.LatLng(34 + (i + 1) / 255, 135.498),
-                              latLng.LatLng(34 + (i + 1) / 255, 135.45),
-                              latLng.LatLng(34 + i / 255, 135.45),
-                              latLng.LatLng(34 + i / 255, 135.498),
+                              latLng.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][4])),
+                              latLng.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][3])),
+                              latLng.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][3])),
+                              latLng.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][4])),
                             ],
-                            borderColor: Color.fromARGB(i, 255, 86, 0)
-                                .withOpacity(i / 255),
+                            borderColor: Color.fromARGB(
+                                    double.parse(csvlist[i][5]).round(),
+                                    255,
+                                    86,
+                                    0)
+                                .withOpacity(
+                                    double.parse(csvlist[i][5]).round() / 255),
                             borderStrokeWidth: 10.0,
-                            color: Color.fromARGB(255, 94, 13, 255)
-                                .withOpacity(i / 255),
+                            color: Color.fromARGB(255, 94, 13, 255).withOpacity(
+                                double.parse(csvlist[i][5]).round() / 255),
                           ),
                       ],
                     ),

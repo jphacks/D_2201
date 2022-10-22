@@ -11,6 +11,8 @@ import 'flutter_flow/internationalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
+import '../globals.dart' as globals;
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,16 @@ void main() async {
   FFAppState(); // Initialize FFAppState
 
   runApp(MyApp());
+  rootBundle.loadString('csv/osaka-score.csv').then((String csv) {
+    for (String line in csv.split('\n')) {
+      List rows = line.split(','); // split by comma
+      if (rows[0] != "index") {
+        if (int.parse(rows[0]) % 2 == 0) {
+          globals.csvlist.add(rows);
+        }
+      }
+    }
+  });
 }
 
 class MyApp extends StatefulWidget {
