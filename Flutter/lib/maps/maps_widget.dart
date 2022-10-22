@@ -21,6 +21,7 @@ const OPEN_WEATHER_MAP_DOMAIN = 'api.openweathermap.org';
 
 void main(List<String> args) async {
   // Open Weather Mapへ通信開始
+
   var client = http.Client();
   var lat = 34.7055051; //緯度
   var long = 135.4983028; //経度
@@ -36,237 +37,6 @@ void main(List<String> args) async {
   } else {
     print(response.statusCode);
   }
-}
-
-double R = 0;
-double G = 0;
-double B = 0;
-
-void HSLtoRGB(int d_hue, int d_saturation, int d_lightness) {
-  if (d_hue < 0) {
-    d_hue = d_hue + 360;
-  } else if (d_hue > 360) {
-    d_hue = d_hue - 360;
-  }
-
-  double Hi = d_hue % 360;
-
-  if (d_saturation == 0) {
-    R = (d_lightness * 255);
-    G = (d_lightness * 255);
-    B = (d_lightness * 255);
-  } else {
-    double d_c = (1.0 - (2.0 * d_lightness - 1).abs()) * d_saturation;
-    double H_d = d_hue / 60.0;
-    double d_x = d_c * (1 - ((H_d % 2) - 1).abs());
-
-    double R1, G1, B1;
-    if (0 <= H_d && H_d < 1) {
-      R1 = d_c;
-      G1 = d_x;
-      B1 = 0;
-    } else if (1 <= H_d && H_d < 2) {
-      R1 = d_x;
-      G1 = d_c;
-      B1 = 0;
-    } else if (2 <= H_d && H_d < 3) {
-      R1 = 0;
-      G1 = d_c;
-      B1 = d_x;
-    } else if (3 <= H_d && H_d < 4) {
-      R1 = 0;
-      G1 = d_x;
-      B1 = d_c;
-    } else if (4 <= H_d && H_d < 5) {
-      R1 = d_x;
-      G1 = 0;
-      B1 = d_c;
-    } else if (5 <= H_d && H_d < 6) {
-      R1 = d_c;
-      G1 = 0;
-      B1 = d_x;
-    } else {
-      R1 = 0;
-      G1 = 0;
-      B1 = 0;
-    }
-
-    double m = d_lightness - d_c * 0.5;
-    R = ((R1 + m) * 255);
-    G = ((G1 + m) * 255);
-    B = ((B1 + m) * 255);
-  }
-}
-
-double HSLtoR(int d_hue, int d_saturation, int d_lightness) {
-  if (d_hue < 0) {
-    d_hue = d_hue + 360;
-  } else if (d_hue > 360) {
-    d_hue = d_hue - 360;
-  }
-
-  double Hi = d_hue % 360;
-
-  if (d_saturation == 0) {
-    R = (d_lightness * 255);
-    G = (d_lightness * 255);
-    B = (d_lightness * 255);
-  } else {
-    double d_c = (1.0 - (2.0 * d_lightness - 1).abs()) * d_saturation;
-    double H_d = d_hue / 60.0;
-    double d_x = d_c * (1 - ((H_d % 2) - 1).abs());
-
-    double R1, G1, B1;
-    if (0 <= H_d && H_d < 1) {
-      R1 = d_c;
-      G1 = d_x;
-      B1 = 0;
-    } else if (1 <= H_d && H_d < 2) {
-      R1 = d_x;
-      G1 = d_c;
-      B1 = 0;
-    } else if (2 <= H_d && H_d < 3) {
-      R1 = 0;
-      G1 = d_c;
-      B1 = d_x;
-    } else if (3 <= H_d && H_d < 4) {
-      R1 = 0;
-      G1 = d_x;
-      B1 = d_c;
-    } else if (4 <= H_d && H_d < 5) {
-      R1 = d_x;
-      G1 = 0;
-      B1 = d_c;
-    } else if (5 <= H_d && H_d < 6) {
-      R1 = d_c;
-      G1 = 0;
-      B1 = d_x;
-    } else {
-      R1 = 0;
-      G1 = 0;
-      B1 = 0;
-    }
-
-    double m = d_lightness - d_c * 0.5;
-    R = ((R1 + m) * 255);
-    G = ((G1 + m) * 255);
-    B = ((B1 + m) * 255);
-  }
-  return R;
-}
-
-double HSLtoG(int d_hue, int d_saturation, int d_lightness) {
-  if (d_hue < 0) {
-    d_hue = d_hue + 360;
-  } else if (d_hue > 360) {
-    d_hue = d_hue - 360;
-  }
-
-  double Hi = d_hue % 360;
-
-  if (d_saturation == 0) {
-    R = (d_lightness * 255);
-    G = (d_lightness * 255);
-    B = (d_lightness * 255);
-  } else {
-    double d_c = (1.0 - (2.0 * d_lightness - 1).abs()) * d_saturation;
-    double H_d = d_hue / 60.0;
-    double d_x = d_c * (1 - ((H_d % 2) - 1).abs());
-
-    double R1, G1, B1;
-    if (0 <= H_d && H_d < 1) {
-      R1 = d_c;
-      G1 = d_x;
-      B1 = 0;
-    } else if (1 <= H_d && H_d < 2) {
-      R1 = d_x;
-      G1 = d_c;
-      B1 = 0;
-    } else if (2 <= H_d && H_d < 3) {
-      R1 = 0;
-      G1 = d_c;
-      B1 = d_x;
-    } else if (3 <= H_d && H_d < 4) {
-      R1 = 0;
-      G1 = d_x;
-      B1 = d_c;
-    } else if (4 <= H_d && H_d < 5) {
-      R1 = d_x;
-      G1 = 0;
-      B1 = d_c;
-    } else if (5 <= H_d && H_d < 6) {
-      R1 = d_c;
-      G1 = 0;
-      B1 = d_x;
-    } else {
-      R1 = 0;
-      G1 = 0;
-      B1 = 0;
-    }
-
-    double m = d_lightness - d_c * 0.5;
-    R = ((R1 + m) * 255);
-    G = ((G1 + m) * 255);
-    B = ((B1 + m) * 255);
-  }
-  return R;
-}
-
-double HSLtoB(int d_hue, int d_saturation, int d_lightness) {
-  if (d_hue < 0) {
-    d_hue = d_hue + 360;
-  } else if (d_hue > 360) {
-    d_hue = d_hue - 360;
-  }
-
-  double Hi = d_hue % 360;
-
-  if (d_saturation == 0) {
-    R = (d_lightness * 255);
-    G = (d_lightness * 255);
-    B = (d_lightness * 255);
-  } else {
-    double d_c = (1.0 - (2.0 * d_lightness - 1).abs()) * d_saturation;
-    double H_d = d_hue / 60.0;
-    double d_x = d_c * (1 - ((H_d % 2) - 1).abs());
-
-    double R1, G1, B1;
-    if (0 <= H_d && H_d < 1) {
-      R1 = d_c;
-      G1 = d_x;
-      B1 = 0;
-    } else if (1 <= H_d && H_d < 2) {
-      R1 = d_x;
-      G1 = d_c;
-      B1 = 0;
-    } else if (2 <= H_d && H_d < 3) {
-      R1 = 0;
-      G1 = d_c;
-      B1 = d_x;
-    } else if (3 <= H_d && H_d < 4) {
-      R1 = 0;
-      G1 = d_x;
-      B1 = d_c;
-    } else if (4 <= H_d && H_d < 5) {
-      R1 = d_x;
-      G1 = 0;
-      B1 = d_c;
-    } else if (5 <= H_d && H_d < 6) {
-      R1 = d_c;
-      G1 = 0;
-      B1 = d_x;
-    } else {
-      R1 = 0;
-      G1 = 0;
-      B1 = 0;
-    }
-
-    double m = d_lightness - d_c * 0.5;
-    R = ((R1 + m) * 255);
-    G = ((G1 + m) * 255);
-    B = ((B1 + m) * 255);
-  }
-  return R;
 }
 
 class MapsWidget extends StatefulWidget {
@@ -433,12 +203,12 @@ class _MapsWidgetState extends State<MapsWidget> {
                                   double.parse(csvlist[i][4])),
                             ],
                             borderColor: Color.fromARGB(
-                              double.parse(csvlist[i][5]).round(),
-                              HSLtoR(csvlist[i][5], 100, 50).round(),
-                              HSLtoG(csvlist[i][5], 100, 50).round(),
-                              HSLtoB(csvlist[i][5], 100, 50).round(),
-                            ).withOpacity(
-                                double.parse(csvlist[i][5]).round() / 255),
+                                    double.parse(csvlist[i][5]).round(),
+                                    255,
+                                    86,
+                                    0)
+                                .withOpacity(
+                                    double.parse(csvlist[i][5]).round() / 255),
                             borderStrokeWidth: 10.0,
                             color: Color.fromARGB(255, 94, 13, 255).withOpacity(
                                 double.parse(csvlist[i][5]).round() / 255),
