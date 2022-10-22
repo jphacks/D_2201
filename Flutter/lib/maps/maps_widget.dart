@@ -159,6 +159,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                     PolygonLayerOptions(
                       polygonCulling: true,
                       polygons: [
+                        /*
                         if (FFAppState().MapSelect) // 街の明かり
                           Polygon(
                             points: [
@@ -187,6 +188,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                             color: Color.fromARGB(255, 255, 13, 13)
                                 .withOpacity(0.5),
                           ),
+                        */
                         //csv
                         for (int i = 0; i < 1250; i++)
                           Polygon(
