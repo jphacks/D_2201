@@ -1,5 +1,5 @@
 import 'dart:html';
-
+import '../globals.dart' as globals;
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -13,7 +13,6 @@ import 'package:open_weather_api_client/open_weather_api_client.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:sprintf/sprintf.dart';
-import 'package:flutter/services.dart';
 //import 'constants.dart' as k;
 import 'dart:convert';
 
@@ -59,21 +58,7 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final csvlist = <List>[
-      [0, 0, 0, 0, 0]
-    ];
-    bool dataready = false;
-    rootBundle.loadString('csv/osaka-score.csv').then((String csv) {
-      for (String line in csv.split('\n')) {
-        print(line);
-        List rows = line.split(','); // split by comma
-        if (rows[0] != "index") {
-          csvlist.add(rows);
-        }
-      }
-      print("00");
-      print(csvlist[0][1]);
-    });
+    List<List> csvlist = globals.csvlist;
 
     return Scaffold(
       key: scaffoldKey,
@@ -203,19 +188,28 @@ class _MapsWidgetState extends State<MapsWidget> {
                                 .withOpacity(0.5),
                           ),
                         //csv
-                        for (int i = 0; i < 255; i++)
+                        for (int i = 0; i < 1250; i++)
                           Polygon(
                             points: [
-                              latLng.LatLng(csvlist[i][2], csvlist[i][4]),
-                              latLng.LatLng(csvlist[i][2], csvlist[i][3]),
-                              latLng.LatLng(csvlist[i][1], csvlist[i][3]),
-                              latLng.LatLng(csvlist[i][1], csvlist[i][4]),
+                              latLng.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][4])),
+                              latLng.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][3])),
+                              latLng.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][3])),
+                              latLng.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][4])),
                             ],
-                            borderColor: Color.fromARGB(i, 255, 86, 0)
-                                .withOpacity(i / 255),
+                            borderColor: Color.fromARGB(
+                                    double.parse(csvlist[i][5]).round(),
+                                    255,
+                                    86,
+                                    0)
+                                .withOpacity(
+                                    double.parse(csvlist[i][5]).round() / 255),
                             borderStrokeWidth: 10.0,
-                            color: Color.fromARGB(255, 94, 13, 255)
-                                .withOpacity(i / 255),
+                            color: Color.fromARGB(255, 94, 13, 255).withOpacity(
+                                double.parse(csvlist[i][5]).round() / 255),
                           ),
                       ],
                     ),
