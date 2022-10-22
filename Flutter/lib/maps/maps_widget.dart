@@ -124,7 +124,6 @@ class _MapsWidgetState extends State<MapsWidget> {
                         ),
                       ],
                     ),
-
                     CircleLayerOptions(
                       circles: [
                         // サークルマーカー1設定
@@ -204,11 +203,16 @@ class _MapsWidgetState extends State<MapsWidget> {
                             ],
                             borderColor: Color.fromARGB(
                                     double.parse(csvlist[i][5]).round(),
-                                    255,
-                                    86,
+                                    min(
+                                            255,
+                                            (510 -
+                                                double.parse(csvlist[i][5]) *
+                                                    2))
+                                        .round(),
+                                    min(255, (double.parse(csvlist[i][5])) * 2)
+                                        .round(),
                                     0)
-                                .withOpacity(
-                                    double.parse(csvlist[i][5]).round() / 255),
+                                .withOpacity(0.7),
                             borderStrokeWidth: 10.0,
                             color: Color.fromARGB(255, 94, 13, 255).withOpacity(
                                 double.parse(csvlist[i][5]).round() / 255),
