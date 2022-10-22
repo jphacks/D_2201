@@ -254,12 +254,13 @@ class _MapsWidgetState extends State<MapsWidget> {
                     ),
                   ),
                 ),
+              //ここまで削除
 
               Align(
                 alignment: AlignmentDirectional(0.8, 0.85),
                 child: Container(
                   width: 40,
-                  height: 80,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: Color(0xFF1D2429),
                     borderRadius: BorderRadius.circular(20),
