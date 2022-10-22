@@ -110,12 +110,12 @@ class _MapsWidgetState extends State<MapsWidget> {
                       urlTemplate:
                           'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png?key=[0b81cf4555b245a6ae3ff3af63c1665d]',
                     ),
-
+/*
                     MarkerLayerOptions(
                       markers: [
                         Marker(
-                          width: 100.0,
-                          height: 100.0,
+                          width: 1.0,
+                          height: 1.0,
                           point: latLng.LatLng(
                               34.54721681342538, 135.50656910226675),
                           builder: (ctx) => Container(
@@ -155,7 +155,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                         ),
                       ],
                     ),
-
+*/
                     PolygonLayerOptions(
                       polygonCulling: true,
                       polygons: [
@@ -216,7 +216,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                   ],
                 ),
               ),
-
+/*
               // 以下のブロックは動作確認用
               // セレクトボタンを押しなおして画像が変更されれば正常に動作してるのでマーカーorフィルターに問題あり
               //本番では削除
@@ -255,6 +255,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                   ),
                 ),
               //ここまで削除
+  */
 
               Align(
                 alignment: AlignmentDirectional(0.8, 0.85),
