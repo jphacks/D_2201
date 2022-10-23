@@ -1,9 +1,6 @@
 # Look for Stars
 [![ License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md) [![pages-build-deployment](https://github.com/jphacks/D_2201/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jphacks/D_2201/actions/workflows/pages/pages-build-deployment)(開発用)
 <img width="1003" alt="スクリーンショット 2022-10-24 2 00 03" src="https://user-images.githubusercontent.com/67728848/197405346-ba462eac-f11d-438e-b80c-5bca476bdd19.png">
-
-
-![Look for Stars](https://jphacks.github.io/D_2201/data/Look_for_Stars_4000-1200.png)
 <img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_丸い星.png" height="150px"> 
 <img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_二重円.png" height="150px"> 
 <img src="https://jphacks.github.io/D_2201/data/デフォルトアイコン_同心円_黄色.png" height="150px"> 
