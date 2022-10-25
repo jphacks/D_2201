@@ -89,6 +89,8 @@ https://user-images.githubusercontent.com/67728848/197405802-9c2dc014-ccba-49fe-
 * IOS
 * Android
 * Web
+[JPhacks D_2201.pptx](https://github.com/jphacks/D_2201/files/9857480/JPhacks.D_2201.pptx)
+
 
 ### 独自技術
 #### ハッカソンで開発した独自機能・技術
