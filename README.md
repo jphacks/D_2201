@@ -89,7 +89,7 @@ https://user-images.githubusercontent.com/67728848/197405802-9c2dc014-ccba-49fe-
 * IOS
 * Android
 * Web
-[JPhacks D_2201.pptx](https://github.com/jphacks/D_2201/files/9857480/JPhacks.D_2201.pptx)
+
 <img width="230" alt="image" src="https://user-images.githubusercontent.com/67728848/197697975-514bdd73-8a5e-47c9-a484-47017e640380.png">
 
 
