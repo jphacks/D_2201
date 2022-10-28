@@ -86,7 +86,7 @@ https://user-images.githubusercontent.com/67728848/197405802-9c2dc014-ccba-49fe-
 
 
 #### デバイス
-* IOS
+* iOS
 * Android
 * Web
 
