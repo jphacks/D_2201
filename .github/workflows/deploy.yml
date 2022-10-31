@@ -19,4 +19,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ${{ secrets.SERVER_DEPLOY_DIR }}
-            git pull origin master
+            bash entrypoint.sh
