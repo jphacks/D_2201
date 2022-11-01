@@ -31,7 +31,6 @@
         let idx = 0;
         const towns = [];
         for (const f of geojson.features) {
-            console.log(f.properties.score);
             const hue = (f.properties.score / 255 * 135);
             const style = { color: `hsl(${hue},100%,50%)`, opacity: 1.0, fillOpacity: .1 };
             const geo = L.geoJSON(f, { style });
