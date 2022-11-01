@@ -1,0 +1,4 @@
+pyowm == 3.3.0
+geojson == 2.5.0
+pandas
+python-dotenv
