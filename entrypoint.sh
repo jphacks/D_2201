@@ -1,7 +1,9 @@
 #!/bin/bash
 
 echo "1.Repository Update"
-git reset --hard
+git checkout master
+git fetch origin master
+git reset --hard origin/master
 
 echo "2.Build Flutter"
 cd ./AwardApp
