@@ -12,11 +12,11 @@ import numpy as np
 
 poi = [34.0, 34.4, 135.0, 135.4]
 
-for i in range(3):  
+for c in range(3):  
    
    poi[0] = round(poi[0]+0.4, 1) 
    poi[1] = round(poi[1]+0.4, 1)  
-   for j in range(17) :  
+   for d in range(17) :  
       poi[2] = round(poi[2]+0.4, 1)
       poi[3] = round(poi[3]+0.4, 1)
       print(poi)
