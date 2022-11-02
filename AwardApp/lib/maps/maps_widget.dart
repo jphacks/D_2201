@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart' as GoogleMaps;
 
 class MapsWidget extends StatefulWidget {
   const MapsWidget({Key? key}) : super(key: key);
@@ -53,14 +54,31 @@ class _MapsWidgetState extends State<MapsWidget> {
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                child: SelectionArea(
-                    child: Text(
-                  'ここにグーグル',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Urbanist',
-                        fontSize: 140,
-                      ),
-                )),
+                child: GoogleMaps.GoogleMap(
+                  initialCameraPosition: GoogleMaps.CameraPosition(
+                      //マップの初期位置を指定
+                      zoom: 17, //ズーム
+                      target: GoogleMaps.LatLng(35.0, 135.0), //経度,緯度
+                      tilt: 45.0, //上下の角度
+                      bearing: 90.0),
+                  mapType: GoogleMaps.MapType.hybrid, //指定した角度だけ回転する
+                  markers: {
+                    GoogleMaps.Marker(
+                      markerId: (GoogleMaps.MarkerId('marker1')),
+                      position: GoogleMaps.LatLng(35.0, 135.0),
+                      infoWindow: GoogleMaps.InfoWindow(
+                          title: '日本のヘソ', snippet: '35度と135度の交点は日本のヘソ'),
+                    )
+                  },
+                  tileOverlays: {
+                    GoogleMaps.TileOverlay(
+                      //表示するタイルのProvider(別途作成する)
+                      transparency: 0.5, //透過度0〜1
+                      tileOverlayId:
+                          GoogleMaps.TileOverlayId('overlay1'), //一意なID
+                    )
+                  },
+                ),
               ),
               Align(
                 alignment: AlignmentDirectional(0.8, 0.85),
