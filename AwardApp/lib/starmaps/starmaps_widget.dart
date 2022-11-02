@@ -3,14 +3,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MapsCopyWidget extends StatefulWidget {
-  const MapsCopyWidget({Key? key}) : super(key: key);
+class StarmapsWidget extends StatefulWidget {
+  const StarmapsWidget({Key? key}) : super(key: key);
 
   @override
-  _MapsCopyWidgetState createState() => _MapsCopyWidgetState();
+  _StarmapsWidgetState createState() => _StarmapsWidgetState();
 }
 
-class _MapsCopyWidgetState extends State<MapsCopyWidget> {
+class _StarmapsWidgetState extends State<StarmapsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

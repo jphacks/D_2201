@@ -8,7 +8,7 @@ export 'search_properties/search_properties_widget.dart'
     show SearchPropertiesWidget;
 export 'want/want_widget.dart' show WantWidget;
 export 'maps/maps_widget.dart' show MapsWidget;
-export 'maps_copy/maps_copy_widget.dart' show MapsCopyWidget;
+export 'starmaps/starmaps_widget.dart' show StarmapsWidget;
 export 'spot_review/spot_review_widget.dart' show SpotReviewWidget;
 export 'profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;

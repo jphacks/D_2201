@@ -1,4 +1,3 @@
-import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -13,35 +12,19 @@ class MapsWidget extends StatefulWidget {
 }
 
 class _MapsWidgetState extends State<MapsWidget> {
-  LatLng? currentUserLocationValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? googleMapsCenter;
-  final googleMapsController = Completer<GoogleMapController>();
 
   @override
   void initState() {
     super.initState();
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
-        .then((loc) => setState(() => currentUserLocationValue = loc));
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
-    if (currentUserLocationValue == null) {
-      return Center(
-        child: SizedBox(
-          width: 50,
-          height: 50,
-          child: CircularProgressIndicator(
-            color: FlutterFlowTheme.of(context).primaryColor,
-          ),
-        ),
-      );
-    }
     return Scaffold(
       key: scaffoldKey,
-      resizeToAvoidBottomInset: false,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).dark600,
@@ -64,22 +47,20 @@ class _MapsWidgetState extends State<MapsWidget> {
           height: MediaQuery.of(context).size.height * 1,
           child: Stack(
             children: [
-              FlutterFlowGoogleMap(
-                controller: googleMapsController,
-                onCameraIdle: (latLng) => googleMapsCenter = latLng,
-                initialLocation: googleMapsCenter ??= currentUserLocationValue!,
-                markerColor: GoogleMarkerColor.violet,
-                mapType: MapType.normal,
-                style: GoogleMapStyle.standard,
-                initialZoom: 14,
-                allowInteraction: true,
-                allowZoom: true,
-                showZoomControls: true,
-                showLocation: true,
-                showCompass: false,
-                showMapToolbar: false,
-                showTraffic: false,
-                centerMapOnMarkerTap: true,
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 1,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: SelectionArea(
+                    child: Text(
+                  'ここにグーグル',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Urbanist',
+                        fontSize: 140,
+                      ),
+                )),
               ),
               Align(
                 alignment: AlignmentDirectional(0.8, 0.85),

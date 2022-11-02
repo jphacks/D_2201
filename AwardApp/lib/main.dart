@@ -119,7 +119,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'homePage_MAIN': HomePageMAINWidget(),
       'Want': WantWidget(),
       'Maps': MapsWidget(),
-      'MapsCopy': MapsCopyWidget(),
+      'Starmaps': StarmapsWidget(),
       'profilePage': ProfilePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -167,7 +167,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.map_sharp,
               size: 24,
             ),
-            label: 'Ms',
+            label: 'Maps',
             tooltip: '',
           ),
           BottomNavigationBarItem(

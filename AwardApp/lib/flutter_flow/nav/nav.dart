@@ -126,11 +126,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : MapsWidget(),
             ),
             FFRoute(
-              name: 'MapsCopy',
+              name: 'Starmaps',
               path: 'Starmaps',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'MapsCopy')
-                  : MapsCopyWidget(),
+                  ? NavBarPage(initialPage: 'Starmaps')
+                  : StarmapsWidget(),
             ),
             FFRoute(
               name: 'SpotReview',
