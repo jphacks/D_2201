@@ -351,7 +351,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('homePage_MAIN');
+                        GoRouter.of(context).prepareAuthEvent();
+                        final user = await signInAnonymously(context);
+                        if (user == null) {
+                          return;
+                        }
+
+                        context.pushNamedAuth('homePage_MAIN', mounted);
                       },
                       text: 'Guest',
                       options: FFButtonOptions(
