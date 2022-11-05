@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../globals.dart' as globals;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as GoogleMaps;
 
 class MapsWidget extends StatefulWidget {
@@ -24,6 +25,7 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    List<List> csvlist = globals.csvlist;
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -58,17 +60,44 @@ class _MapsWidgetState extends State<MapsWidget> {
                   initialCameraPosition: GoogleMaps.CameraPosition(
                       //マップの初期位置を指定
                       zoom: 17, //ズーム
-                      target: GoogleMaps.LatLng(35.0, 135.0), //経度,緯度
+                      target: GoogleMaps.LatLng(
+                          34.54919625630112, 135.5063116098694), //経度,緯度
                       tilt: 45.0, //上下の角度
                       bearing: 90.0),
-                  mapType: GoogleMaps.MapType.hybrid, //指定した角度だけ回転する
+                  mapType: GoogleMaps.MapType.normal, //指定した角度だけ回転する
                   markers: {
                     GoogleMaps.Marker(
                       markerId: (GoogleMaps.MarkerId('marker1')),
-                      position: GoogleMaps.LatLng(35.0, 135.0),
-                      infoWindow: GoogleMaps.InfoWindow(
-                          title: '日本のヘソ', snippet: '35度と135度の交点は日本のヘソ'),
+                      position: GoogleMaps.LatLng(
+                          34.54919625630112, 135.5063116098694),
+                      infoWindow:
+                          GoogleMaps.InfoWindow(title: '日本のヘソ', snippet: 'ハム大'),
                     )
+                  },
+                  polygons: {
+                    for (int i = 0; i < 1250; i++)
+                      GoogleMaps.Polygon(
+                          strokeColor: Colors.pink.withOpacity(0.8), //線の色
+                          fillColor: Color.fromARGB(255, 94, 13, 255)
+                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                                  255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
+
+                          strokeWidth: 2, //線の太さ
+                          points: [
+                            //ポリゴンで囲う地点
+                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][4])),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][3])),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][3])),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][4])),
+                          ],
+                          polygonId: GoogleMaps.PolygonId(
+                            //一意なID
+                            'polygon1',
+                          ))
                   },
                   tileOverlays: {
                     GoogleMaps.TileOverlay(
