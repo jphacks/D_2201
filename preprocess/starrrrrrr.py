@@ -1,6 +1,5 @@
 import requests
 import json
-import pprint
 import datetime 
 
 lat = 0.0
