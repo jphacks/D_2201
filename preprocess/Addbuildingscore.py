@@ -10,18 +10,18 @@ import requests
 import json
 import numpy as np
 
-poi = [34.0, 34.4, 135.0, 135.4]
+poi = [33.6, 34.4, 134.6, 135.4]
 
-for c in range(3):  
+for c in range(2):  
    
-   poi[0] = round(poi[0]+0.4, 1) 
-   poi[1] = round(poi[1]+0.4, 1)  
-   for d in range(17) :  
-      poi[2] = round(poi[2]+0.4, 1)
-      poi[3] = round(poi[3]+0.4, 1)
+   poi[0] = round(poi[0]+0.8, 1) 
+   poi[1] = round(poi[1]+0.8, 1)  
+   for d in range(9) :  
+      poi[2] = round(poi[2]+0.8, 1)
+      poi[3] = round(poi[3]+0.8, 1)
       print(poi)
       
-      PARAM = 150
+      PARAM = 600
       JLLfile = "https://jphacks.github.io/D_2201/data/JLL_Data_Osaka.csv"
       #JLLfile.encode("cp437").decode("utf-8")
       df = pd.read_csv(JLLfile, encoding="utf-8")
@@ -60,8 +60,8 @@ for c in range(3):
       lastyear = today - relativedelta.relativedelta(years=1)
       ly = lastyear.strftime('%Y%m%d')
 
-      snah = int(round((poi[1]-poi[0]) / 0.1, 0)) #エアロゾルデータ取得のための縦のデータ数
-      snaw = int(round((poi[3]-poi[2]) / 0.1, 0)) #エアロゾルデータ取得のための横のデータ数
+      snah = int(round((poi[1]-poi[0]) / 0.2, 0)) #エアロゾルデータ取得のための縦のデータ数
+      snaw = int(round((poi[3]-poi[2]) / 0.2, 0)) #エアロゾルデータ取得のための横のデータ数
 
       url = 'https://www.jpmap-jaxa.jp/jpmap/api/v1/rect/' #aerpsplの光学的厚さのリクエストurl
       today = datetime.date.today()
@@ -75,11 +75,11 @@ for c in range(3):
       bar0 = tqdm(total=snah*snaw)
         #エアロゾルスコア
       for k in range(snah):
-            lat_min_round = poi[1] - 0.1* (k+1)
-            lat_max_round = poi[1] -0.1* k
+            lat_min_round = poi[1] - 0.2* (k+1)
+            lat_max_round = poi[1] -0.2* k
             for l in range(snaw):
-                lon_min_round = poi[2] + 0.1* l
-                lon_max_round = poi[2] + 0.1* (l + 1)
+                lon_min_round = poi[2] + 0.2* l
+                lon_max_round = poi[2] + 0.2* (l + 1)
                 
                 params = {'product':'4',  
                 'interval':'3',
@@ -94,10 +94,10 @@ for c in range(3):
                 res = requests.get(url, params=params)
                 json_load = json.loads(res.text)
                 for m in range(13):
-                    if json_load['data'][m]['value'] == -9999:
-                        a.append(json_load['data'][m-1]['value'])
+                    if json_load['data'][m-1]['value'] == -9999:
+                        a.append(json_load['data'][m-2]['value'])
                     else:
-                        a.append(json_load['data'][m]['value'])
+                        a.append(json_load['data'][m-1]['value'])
                 bar0.update(1)
                 aerosol_score[k][l] = np.exp(-2.72 * a[-1])
 
