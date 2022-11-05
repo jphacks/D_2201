@@ -98,9 +98,9 @@ for c in range(54):
                 a = []
                 res = requests.get(url, params=params)
                 json_load = json.loads(res.text)
-                for k in range(0,13):
-                    a.append(json_load['data'][k]['value'])
-                    k = k + 1
+                for m in range(0,13):
+                    a.append(json_load['data'][m]['value'])
+                    m = m + 1
                 
                 remove_specified_values(a, -9999)
                 bar0.update(1)
