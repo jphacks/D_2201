@@ -20,7 +20,11 @@ for i in range(4):
     data = json.loads(res.text)
     json_load = json.loads(res.text)
     a = []
+    b = []
+    c = []
     for j in range(len(json_load['result'])):
-        a.append(json_load['result'][j]['jpName'])
-    print(a)
+        a.append(json_load['result'][j]['altitude'])
+        b.append(json_load['result'][j]['direction'])
+        c.append(json_load['result'][j]['jpName'])
+        print(b[j],a[j],c[j])
     hour = hour + 2
