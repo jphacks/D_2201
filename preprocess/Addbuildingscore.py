@@ -14,18 +14,19 @@ def remove_specified_values(arr, value):
     while value in arr:
         arr.remove(value)
         
-poi = [33.6, 34.4, 134.6, 135.4]
+poi = [23.6,24.0,123.4,123.8]
 
-for c in range(2):  
-   
-   poi[0] = round(poi[0]+0.8, 1) 
-   poi[1] = round(poi[1]+0.8, 1)  
-   for d in range(9) :  
-      poi[2] = round(poi[2]+0.8, 1)
-      poi[3] = round(poi[3]+0.8, 1)
+for c in range(54):  
+   poi[2] = 123.4
+   poi[3] = 123.8
+   poi[0] = round(poi[0]+0.4, 1) 
+   poi[1] = round(poi[1]+0.4, 1)  
+   for d in range(55) :  
+      poi[2] = round(poi[2]+0.4, 1)
+      poi[3] = round(poi[3]+0.4, 1)
       print(poi)
       
-      PARAM = 600
+      PARAM = 150
       JLLfile = "https://jphacks.github.io/D_2201/data/JLL_Data_Osaka.csv"
       #JLLfile.encode("cp437").decode("utf-8")
       df = pd.read_csv(JLLfile, encoding="utf-8")
@@ -79,11 +80,11 @@ for c in range(2):
       bar0 = tqdm(total=snah*snaw)
         #エアロゾルスコア
       for k in range(snah):
-            lat_min_round = poi[1] - 0.2* (k+1)
-            lat_max_round = poi[1] -0.2* k
+            lat_min_round = poi[1] - 0.1* (k+1)
+            lat_max_round = poi[1] -0.1* k
             for l in range(snaw):
-                lon_min_round = poi[2] + 0.2* l
-                lon_max_round = poi[2] + 0.2* (l + 1)
+                lon_min_round = poi[2] + 0.1* l
+                lon_max_round = poi[2] + 0.1* (l + 1)
                 
                 params = {'product':'4',  
                 'interval':'3',
@@ -97,11 +98,9 @@ for c in range(2):
                 a = []
                 res = requests.get(url, params=params)
                 json_load = json.loads(res.text)
-                for m in range(13):
-                    if json_load['data'][m-1]['value'] == -9999:
-                        a.append(json_load['data'][m-2]['value'])
-                    else:
-                        a.append(json_load['data'][m-1]['value'])
+                for k in range(0,13):
+                    a.append(json_load['data'][k]['value'])
+                    k = k + 1
                 
                 remove_specified_values(a, -9999)
                 bar0.update(1)
@@ -165,4 +164,4 @@ for c in range(2):
                 bar.update(1)
       ft_colct = FeatureCollection(ft_all)
       with open(outfile, 'w') as f:
-            dump(ft_colct, f, separators=(',', ':'))
+            dump(ft_colct, f, separators=(',', ':'))   
