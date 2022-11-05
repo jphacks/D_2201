@@ -10,6 +10,10 @@ import requests
 import json
 import numpy as np
 
+def remove_specified_values(arr, value):
+    while value in arr:
+        arr.remove(value)
+        
 poi = [33.6, 34.4, 134.6, 135.4]
 
 for c in range(2):  
@@ -98,8 +102,11 @@ for c in range(2):
                         a.append(json_load['data'][m-2]['value'])
                     else:
                         a.append(json_load['data'][m-1]['value'])
+                
+                remove_specified_values(a, -9999)
                 bar0.update(1)
                 aerosol_score[k][l] = np.exp(-2.72 * a[-1])
+                
 
       print("all")
       bar = tqdm(total = sepi * sepj)
