@@ -13,15 +13,28 @@ import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 import 'dart:ui' as ui;
 import 'dart:typed_data';
+import 'dart:io';
+import 'dart:convert';
+import '../globals.dart' as globals;
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
-
   FFAppState(); // Initialize FFAppState
 
   runApp(MyApp());
+  await rootBundle.loadString('csv/osaka-score.csv').then((String csv) {
+    for (String line in csv.split('\n')) {
+      List rows = line.split(','); // split by comma
+      if (rows[0] != "index") {
+        if (int.parse(rows[0]) % 2 == 0) {
+          globals.csvlist.add(rows);
+        }
+      }
+    }
+  });
 }
 
 class MyApp extends StatefulWidget {

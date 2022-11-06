@@ -78,6 +78,7 @@ dependencies:
   google_maps_flutter: ^2.2.1
   latlong2: ^0.8.1
   latlng: ^0.2.0
+  provider: ^6.0.4
 
 dependency_overrides:
   webview_flutter_android: 2.10.3
@@ -120,6 +121,7 @@ flutter:
     - assets/lottie_animations/
     - assets/rive_animations/
     - assets/pdfs/
+    - assets/csv/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
