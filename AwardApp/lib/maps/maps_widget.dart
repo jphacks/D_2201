@@ -20,7 +20,7 @@ class _MapsWidgetState extends State<MapsWidget> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {})); //あ
   }
 
   @override
@@ -86,13 +86,13 @@ class _MapsWidgetState extends State<MapsWidget> {
                           points: [
                             //ポリゴンで囲う地点
                             GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                  double.parse(csvlist[i][4])),
+                                double.parse(csvlist[i][4])),
                             GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                  double.parse(csvlist[i][3])),
+                                double.parse(csvlist[i][3])),
                             GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                  double.parse(csvlist[i][3])),
+                                double.parse(csvlist[i][3])),
                             GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                  double.parse(csvlist[i][4])),
+                                double.parse(csvlist[i][4])),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
