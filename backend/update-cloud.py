@@ -52,3 +52,36 @@ with open(outfile0, 'w') as f:
     dump(ft_colct, f, separators=(',', ':'))
 with open(outfile1, 'w') as f:
     dump(ft_colct, f, separators=(',', ':'))
+  
+#csv出力
+import json
+import pandas as pd
+outfile1_csv =  os.getenv('DATA_PATH')+"cloud_latest.csv"
+
+geojsondata = open(outfile1, 'r')
+data = json.load(geojsondata)
+scores = []
+lat1 = []
+lat2 = []
+lon1 = []
+lon2 = []
+for apoly in data["features"]:
+  scores.append(apoly["properties"]["score"])
+  lats = set()
+  lons = set()
+  for point in apoly["geometry"]["coordinates"][0]:
+    lats.add(point[1])
+    lons.add(point[0])
+  lats = sorted(list(lats))
+  lons = sorted(list(lons))
+  lat1.append(lats[0])
+  lat2.append(lats[1])
+  lon1.append(lons[0])
+  lon2.append(lons[1])
+df = pd.DataFrame()
+df["scores"] = scores
+df["lat1"] = lat1
+df["lat2"] = lat2
+df["lon1"] = lon1
+df["lon2"] = lon2
+df.to_csv(outfile1_csv,index=False)
