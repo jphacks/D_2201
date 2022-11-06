@@ -10,13 +10,18 @@ import requests
 import json
 import numpy as np
 
-poi = [34.0, 34.4, 135.0, 135.4]
+def remove_specified_values(arr, value):
+    while value in arr:
+        arr.remove(value)
+        
+poi = [23.6,24.0,123.4,123.8]
 
-for c in range(3):  
-   
+for c in range(54):  
+   poi[2] = 123.4
+   poi[3] = 123.8
    poi[0] = round(poi[0]+0.4, 1) 
    poi[1] = round(poi[1]+0.4, 1)  
-   for d in range(17) :  
+   for d in range(55) :  
       poi[2] = round(poi[2]+0.4, 1)
       poi[3] = round(poi[3]+0.4, 1)
       print(poi)
@@ -60,8 +65,8 @@ for c in range(3):
       lastyear = today - relativedelta.relativedelta(years=1)
       ly = lastyear.strftime('%Y%m%d')
 
-      snah = int(round((poi[1]-poi[0]) / 0.1, 0)) #エアロゾルデータ取得のための縦のデータ数
-      snaw = int(round((poi[3]-poi[2]) / 0.1, 0)) #エアロゾルデータ取得のための横のデータ数
+      snah = int(round((poi[1]-poi[0]) / 0.2, 0)) #エアロゾルデータ取得のための縦のデータ数
+      snaw = int(round((poi[3]-poi[2]) / 0.2, 0)) #エアロゾルデータ取得のための横のデータ数
 
       url = 'https://www.jpmap-jaxa.jp/jpmap/api/v1/rect/' #aerpsplの光学的厚さのリクエストurl
       today = datetime.date.today()
@@ -93,13 +98,14 @@ for c in range(3):
                 a = []
                 res = requests.get(url, params=params)
                 json_load = json.loads(res.text)
-                for m in range(13):
-                    if json_load['data'][m]['value'] == -9999:
-                        a.append(json_load['data'][m-1]['value'])
-                    else:
-                        a.append(json_load['data'][m]['value'])
+                for m in range(0,13):
+                    a.append(json_load['data'][m]['value'])
+                    m = m + 1
+                
+                remove_specified_values(a, -9999)
                 bar0.update(1)
                 aerosol_score[k][l] = np.exp(-2.72 * a[-1])
+                
 
       print("all")
       bar = tqdm(total = sepi * sepj)
@@ -158,4 +164,4 @@ for c in range(3):
                 bar.update(1)
       ft_colct = FeatureCollection(ft_all)
       with open(outfile, 'w') as f:
-            dump(ft_colct, f, separators=(',', ':'))
+            dump(ft_colct, f, separators=(',', ':'))   
