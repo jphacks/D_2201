@@ -46,8 +46,6 @@ class _MapsWidgetState extends State<MapsWidget> {
   @override
   Widget build(BuildContext context) {
     List<List> csvlist = globals.csvlist;
-    print(csvlist[1][1]);
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -85,8 +83,8 @@ class _MapsWidgetState extends State<MapsWidget> {
                       target: GoogleMaps.LatLng(
                           34.54919625630112, 135.5063116098694), //経度,緯度
                       tilt: 45.0, //上下の角度
-                      bearing: 90.0),
-                  mapType: GoogleMaps.MapType.normal, //指定した角度だけ回転する
+                      bearing: 90.0), //指定した角度だけ回転する
+                  mapType: GoogleMaps.MapType.hybrid,
                   markers: {
                     GoogleMaps.Marker(
                       markerId: (GoogleMaps.MarkerId('marker1')),
@@ -99,30 +97,16 @@ class _MapsWidgetState extends State<MapsWidget> {
 
                   polygons: {
                     for (int i = 0; i < 1250; i++)
-                      //var list = csvlist.elementAt(i);
                       GoogleMaps.Polygon(
-                          strokeColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
-                                  255,
-                                  86,
-                                  0)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
-                                  255), //Colors.pink.withOpacity(0.8), //線の色
-                          fillColor: Color.fromARGB(255, 94, 13, 255)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
-                                  255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
+                          strokeColor: Colors.pink.withOpacity(0.8), //線の色
+                          fillColor: Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
-
                           points: [
                             //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                double.parse(csvlist[i][4])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                double.parse(csvlist[i][3])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                double.parse(csvlist[i][3])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                double.parse(csvlist[i][4])),
+                            GoogleMaps.LatLng(35.0, 135.0),
+                            GoogleMaps.LatLng(35.0, 135.005),
+                            GoogleMaps.LatLng(35.01, 134.999),
+                            GoogleMaps.LatLng(35.01, 134.994),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
