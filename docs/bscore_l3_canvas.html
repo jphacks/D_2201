@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="apple-touch-icon" href="https://jphacks.github.io/D_2201/data/%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3_%E6%98%9F.png" />
+    <meta property="og:image" content="https://jphacks.github.io/D_2201/data/%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3_%E6%98%9F.png" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>testdisp</title>
+    <link rel="stylesheet" href="https://code4sabae.github.io/leaflet-mjs/leaflet-grayscale.css">
+    <script type="module">
+        import L from "https://code4sabae.github.io/leaflet-mjs/leaflet.mjs";
+        import { CSV } from "https://js.sabae.cc/CSV.js";
+        import { toHalf } from "https://js.sabae.cc/toHalf.js";
+
+        const map = L.map("mapid",{
+            preferCanvas:true, //trueとし、Canvasレンダラーを選択
+        });
+        L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+            attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>"',
+            maxZoom: 18,
+        }).addTo(map);
+
+        const toLL = ll => [ll[1], ll[0]];
+
+        const lls = [];
+
+        // ポリゴン
+        const url = "https://jphacks.github.io/D_2201/data/building_all_level3.geojson";
+        const geojson = await (await fetch(url)).json();
+        let idx = 0;
+        const towns = [];
+        for (const f of geojson.features) {
+            const hue = (f.properties.score);
+            const style = { color: `hsl(${hue},100%,50%)`, opacity: 1.0, fillOpacity: .1 };
+            const geo = L.geoJSON(f, { style });
+            geo.addTo(map);
+            lls.push(toLL(f.geometry.coordinates[0][0]));
+            //geo.bindPopup(f.properties.MOJI);
+            geo.data = f;
+            towns.push(geo);
+        }
+        if (lls.length) {
+            map.fitBounds(lls);
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1 id=title>雲量　簡易スコア表示</h1>
+    <div class=subtitle>（開発用可視化ツール）</div>
+    <a href="https://jphacks.github.io/D_2201/map-data.html" class="btn btn-secondary" tabindex="-1" role="button">M(data)</a>
+    <a href="https://jphacks.github.io/D_2201/map-img.html" class="btn btn-secondary" tabindex="-1" role="button">M(img)</a>
+    <div id="mapid"></div>
+
+    <div id="link">
+        <div id="src">
+            <div>DATA:(
+                Copernicus Sentinel data 2022' for Sentinel data<a herf="https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice">Open Access</a><BR>
+                国土地理院地図<a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a>
+                )
+            </div>
+            <div>LIB: <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> <a
+                    href='https://leafletjs.com/'>Leaflet</a> (<a href=https://github.com/Leaflet/Leaflet>src on
+                    GitHub</a>) → <a href=https://fukuno.jig.jp/2826>leaflet.mjs</a> (<a
+                    href=https://github.com/code4sabae/leaflet-mjs>src on GitHub</a>)</div>
+            <div>APP: <a href=https://creativecommons.org/licenses/by/4.0/deed.ja>CC BY</a> </div>
+        </div>
+        <script type="module" src="https://js.sabae.cc/QRCode.js"></script>
+        <qr-code value="https://jphacks.github.io/D_2201/"></qr-code>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        word-wrap: break-word;
+        --main-color: #245fff;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 0;
+        padding: .0em;
+        background-color: var(--main-color);
+        color: white;
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1vw;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin: 0;
+        padding: .3em;
+        background-color: var(--main-color);
+        color: white;
+        font-size: 1vw;
+    }
+
+    /* map */
+    #mapid {
+        width: 100%;
+        height: 70vh;
+    }
+
+    /* footer */
+    #debug {
+        border: 1px solid black;
+        margin: 1em;
+        padding: 0.5em;
+        font-size: 70%;
+    }
+
+    #src {
+        margin: 1em 0 .5em 0;
+    }
+
+    a {
+        color: gray !important;
+    }
+</style>
