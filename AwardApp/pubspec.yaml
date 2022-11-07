@@ -126,6 +126,7 @@ flutter:
     - assets/rive_animations/
     - assets/pdfs/
     - assets/csv/osaka-score.csv
+    - assets/images/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

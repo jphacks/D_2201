@@ -1,5 +1,7 @@
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,34 +30,110 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).dark600,
         automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
+            size: 30,
+          ),
+          onPressed: () async {
+            context.pop();
+          },
+        ),
         title: Text(
-          'Astronomical observation',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Urbanist',
-                color: FlutterFlowTheme.of(context).tertiaryColor,
-                fontWeight: FontWeight.bold,
-              ),
+          'starmaps',
+          style: FlutterFlowTheme.of(context).title2,
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
       ),
-      body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: DefaultTabController(
+              length: 2,
+              initialIndex: 0,
+              child: Column(
+                children: [
+                  TabBar(
+                    labelColor: FlutterFlowTheme.of(context).turquoise,
+                    unselectedLabelColor: FlutterFlowTheme.of(context).grayIcon,
+                    labelStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Urbanist',
+                          fontWeight: FontWeight.w500,
+                        ),
+                    indicatorColor: FlutterFlowTheme.of(context).turquoise,
+                    indicatorWeight: 4,
+                    tabs: [
+                      Tab(
+                        text: 'starmap',
+                      ),
+                      Tab(
+                        text: '星座(constellation)',
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                    'EveryStarryNightPlanisphere_Jewelry_Disk_4000px.png'),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SelectionArea(
+                                  child: Text(
+                                'Hello World',
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              )),
+                              FlutterFlowWebView(
+                                url: 'https://github.com/jphacks/D_2201',
+                                bypass: false,
+                                height: 640,
+                                verticalScroll: false,
+                                horizontalScroll: false,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          child: SelectionArea(
-              child: Text(
-            '星座マップ',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
-                  fontFamily: 'Urbanist',
-                  fontSize: 80,
-                ),
-          )),
-        ),
+        ],
       ),
     );
   }

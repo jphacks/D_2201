@@ -9,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:csv/csv.dart';
 
 class MapsWidget extends StatefulWidget {
   const MapsWidget({Key? key}) : super(key: key);
@@ -19,6 +21,19 @@ class MapsWidget extends StatefulWidget {
 
 class _MapsWidgetState extends State<MapsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  List<List<dynamic>> _data = [];
+
+  // This function is triggered when the floating button is pressed
+  void _loadCSV() async {
+    final _rawData = await rootBundle.loadString("assets/osaka-score.csv");
+    List<List<dynamic>> _listData =
+        const CsvToListConverter().convert(_rawData);
+    setState(() {
+      _data = _listData;
+    });
+  }
+
   Future<List<List>> csvImport() async {
     final String importPath = 'osaka-score.csv';
     final File importFile = File(importPath);
@@ -45,7 +60,6 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List<List> csvlist = globals.csvlist;
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -97,29 +111,16 @@ class _MapsWidgetState extends State<MapsWidget> {
 
                   polygons: {
                     for (int i = 0; i < 1250; i++)
-                    
                       GoogleMaps.Polygon(
-                          strokeColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
-                                  255,
-                                  86,
-                                  0)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
-                                  255), //Colors.pink.withOpacity(0.8), //線の色
-                          fillColor: Color.fromARGB(255, 94, 13, 255)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
-                                  255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
+                          strokeColor: Colors.pink.withOpacity(0.8), //線の色
+                          fillColor: Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                double.parse(csvlist[i][4])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                double.parse(csvlist[i][3])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                double.parse(csvlist[i][3])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                double.parse(csvlist[i][4])),
+                            GoogleMaps.LatLng(35.0, 135.0),
+                            GoogleMaps.LatLng(35.0, 135.005),
+                            GoogleMaps.LatLng(35.01, 134.999),
+                            GoogleMaps.LatLng(35.01, 134.994),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
