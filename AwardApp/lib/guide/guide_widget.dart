@@ -99,8 +99,7 @@ class _GuideWidgetState extends State<GuideWidget> {
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               )),
                               FlutterFlowWebView(
-                                url:
-                                    'https://jphacks.github.io/D_2201/README.html',
+                                url: 'https://github.com/jphacks/D_2201',
                                 bypass: false,
                                 height: 640,
                                 verticalScroll: false,
