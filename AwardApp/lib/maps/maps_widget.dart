@@ -97,16 +97,29 @@ class _MapsWidgetState extends State<MapsWidget> {
 
                   polygons: {
                     for (int i = 0; i < 1250; i++)
+                    
                       GoogleMaps.Polygon(
-                          strokeColor: Colors.pink.withOpacity(0.8), //線の色
-                          fillColor: Colors.pink.withOpacity(0.2), //塗りつぶし色
+                          strokeColor: Color.fromARGB(
+                                  double.parse(csvlist[i][5]).round(),
+                                  255,
+                                  86,
+                                  0)
+                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                                  255), //Colors.pink.withOpacity(0.8), //線の色
+                          fillColor: Color.fromARGB(255, 94, 13, 255)
+                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                                  255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(35.0, 135.0),
-                            GoogleMaps.LatLng(35.0, 135.005),
-                            GoogleMaps.LatLng(35.01, 134.999),
-                            GoogleMaps.LatLng(35.01, 134.994),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
+                                double.parse(csvlist[i][4])),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
+                                double.parse(csvlist[i][3])),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
+                                double.parse(csvlist[i][3])),
+                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
+                                double.parse(csvlist[i][4])),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
