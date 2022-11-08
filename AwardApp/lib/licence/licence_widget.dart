@@ -87,7 +87,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                       child: InkWell(
                         onTap: () async {
                           await launchURL(
-                              'https://www.restec.or.jp/satellite/sentinel-2-a-2-b.html');
+                              'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice');
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -144,7 +144,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 12, 0),
                                       child: Text(
-                                        '123 disney Way, Willingmington, WV, 20492',
+                                        'Copernicus Sentinel data 2022 for Sentinel data',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -168,7 +168,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Ver1.0()',
+                                    'sentinel',
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
