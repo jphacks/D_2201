@@ -31,9 +31,11 @@ csvlist = {
 import datetime
 dt_now = datetime.datetime.now()
 timestamp = str(dt_now.year) +"-"+ str(dt_now.month) +"-"+ str(dt_now.day) +"-"+str(dt_now.hour)
-
+print("====================")
+print(timestamp)
 #取得と出力
 for level in csvlist.keys():
+    print(level,"start")
     outfilename_geojson0 = os.getenv('DATA_PATH') + "cloud_all_" + timestamp + "_" + level + ".geojson"
     outfilename_geojson1 = os.getenv('DATA_PATH') + "cloud_all_latest_" + level + ".geojson"
     outfilename_csv = os.getenv('DATA_PATH') + "cloud_all_latest_" + level + ".csv"
@@ -66,3 +68,4 @@ for level in csvlist.keys():
         dump(ft_colct, f, separators=(',', ':'))
     df["score"] = scores
     df.to_csv(outfilename_csv,index=True)
+    print(level, "complete.")
