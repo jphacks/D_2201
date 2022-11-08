@@ -117,7 +117,7 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               )),
                               FlutterFlowWebView(
-                                url: 'https://github.com/jphacks/D_2201',
+                                url: 'https://www.stellatheater.com/',
                                 bypass: false,
                                 height: 640,
                                 verticalScroll: false,
