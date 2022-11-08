@@ -1,7 +1,10 @@
-name: CI
+name: CI/CD
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
