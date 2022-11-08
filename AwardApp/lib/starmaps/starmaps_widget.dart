@@ -93,9 +93,14 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              SelectionArea(
+                                  child: Text(
+                                '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              )),
                               Center(
                                 child: Image.asset(
-                                    'EveryStarryNightPlanisphere_Jewelry_Disk_4000px.png'),
+                                    'assets/images/EveryStarryNightPlanisphere_Jewelry_Disk_4000px.png'),
                               )
                             ],
                           ),
@@ -113,7 +118,7 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                             children: [
                               SelectionArea(
                                   child: Text(
-                                'Hello World',
+                                '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               )),
                               FlutterFlowWebView(

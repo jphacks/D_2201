@@ -187,6 +187,124 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4,
+                            color: Color(0x32000000),
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: InkWell(
+                        onTap: () async {
+                          await launchURL(
+                              'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice');
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Hero(
+                              tag: 'mainImage',
+                              transitionOnUserGestures: true,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0),
+                                  bottomRight: Radius.circular(0),
+                                  topLeft: Radius.circular(8),
+                                  topRight: Radius.circular(8),
+                                ),
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                  width: double.infinity,
+                                  height: 140,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(16, 12, 16, 8),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    'Sentinel(仮)',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Urbanist',
+                                          color: FlutterFlowTheme.of(context)
+                                              .darkText,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 12, 0),
+                                      child: Text(
+                                        'Copernicus Sentinel data 2022 for Sentinel data',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Lexend Deca',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .grayIcon,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(16, 4, 16, 12),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'sentinel',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: FlutterFlowTheme.of(context)
+                                              .gray600,
+                                          fontSize: 12,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
