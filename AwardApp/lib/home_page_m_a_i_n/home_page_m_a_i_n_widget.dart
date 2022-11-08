@@ -302,7 +302,7 @@ class _HomePageMAINWidgetState extends State<HomePageMAINWidget> {
                                 Hero(
                                   tag: valueOrDefault<String>(
                                     listViewPropertiesRecord.mainImage,
-                                    'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png' +
+                                    'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG' +
                                         '$listViewIndex',
                                   ),
                                   transitionOnUserGestures: true,
@@ -316,7 +316,7 @@ class _HomePageMAINWidgetState extends State<HomePageMAINWidget> {
                                     child: CachedNetworkImage(
                                       imageUrl: valueOrDefault<String>(
                                         listViewPropertiesRecord.mainImage,
-                                        'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                        'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                       ),
                                       width: double.infinity,
                                       height: 190,

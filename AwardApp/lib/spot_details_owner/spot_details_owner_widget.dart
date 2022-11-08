@@ -75,14 +75,14 @@ class _SpotDetailsOwnerWidgetState extends State<SpotDetailsOwnerWidget> {
                                           image: Image.network(
                                             valueOrDefault<String>(
                                               widget.propertyRef!.mainImage,
-                                              'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                              'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                             ),
                                             fit: BoxFit.contain,
                                           ),
                                           allowRotation: false,
                                           tag: valueOrDefault<String>(
                                             widget.propertyRef!.mainImage,
-                                            'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                            'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                           ),
                                           useHeroAnimation: true,
                                         ),
@@ -92,7 +92,7 @@ class _SpotDetailsOwnerWidgetState extends State<SpotDetailsOwnerWidget> {
                                   child: Hero(
                                     tag: valueOrDefault<String>(
                                       widget.propertyRef!.mainImage,
-                                      'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                      'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                     ),
                                     transitionOnUserGestures: true,
                                     child: ClipRRect(
@@ -100,7 +100,7 @@ class _SpotDetailsOwnerWidgetState extends State<SpotDetailsOwnerWidget> {
                                       child: Image.network(
                                         valueOrDefault<String>(
                                           widget.propertyRef!.mainImage,
-                                          'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                          'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                         ),
                                         width: double.infinity,
                                         height: double.infinity,

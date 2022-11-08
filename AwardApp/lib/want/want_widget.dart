@@ -304,7 +304,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                     String>(
                                                                   columnPropertiesRecord
                                                                       .mainImage,
-                                                                  'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                                                  'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                                                 ),
                                                                 width: double
                                                                     .infinity,
@@ -597,7 +597,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                 String>(
                                                               columnPropertiesRecord
                                                                   .mainImage,
-                                                              'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                                              'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                                             ),
                                                             width:
                                                                 double.infinity,
