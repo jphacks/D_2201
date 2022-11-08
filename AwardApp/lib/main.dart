@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -19,22 +20,26 @@ import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
 
 void main() async {
+  int count = 0;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
   FFAppState(); // Initialize FFAppState
-
-  runApp(MyApp());
-  await rootBundle.loadString('csv/osaka-score.csv').then((String csv) {
+  rootBundle.loadString('assets/csv/osaka-score.csv').then((String csv) {
     for (String line in csv.split('\n')) {
       List rows = line.split(','); // split by comma
       if (rows[0] != "index") {
         if (int.parse(rows[0]) % 2 == 0) {
           globals.csvlist.add(rows);
+          count++;
         }
       }
     }
+    // print(count);
   });
+
+  //print(globals.csvlist);
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
