@@ -96,7 +96,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                   },
 
                   polygons: {
-                    for (int i = 0; i < 1250; i++) //光量
+                    for (int i = 0; i < 2664; i++) //光量
                       GoogleMaps.Polygon(
                           strokeColor: Color.fromARGB(
                                   double.parse(csvlist[i][5]).round(),
