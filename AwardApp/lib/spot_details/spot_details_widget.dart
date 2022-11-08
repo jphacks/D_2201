@@ -204,7 +204,7 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                                             child: FlutterFlowExpandedImageView(
                                               image: CachedNetworkImage(
                                                 imageUrl:
-                                                    'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
+                                                    'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
                                                 fit: BoxFit.contain,
                                               ),
                                               allowRotation: false,
@@ -222,7 +222,7 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                                               BorderRadius.circular(16),
                                           child: CachedNetworkImage(
                                             imageUrl:
-                                                'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
+                                                'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
                                             width: double.infinity,
                                             height: double.infinity,
                                             fit: BoxFit.cover,

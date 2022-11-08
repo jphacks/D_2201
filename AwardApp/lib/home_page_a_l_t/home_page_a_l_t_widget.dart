@@ -317,7 +317,7 @@ class _HomePageALTWidgetState extends State<HomePageALTWidget> {
                                   child: Hero(
                                     tag: valueOrDefault<String>(
                                       columnPropertiesRecord.mainImage,
-                                      'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG' +
+                                      'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png' +
                                           '$columnIndex',
                                     ),
                                     transitionOnUserGestures: true,
@@ -331,7 +331,7 @@ class _HomePageALTWidgetState extends State<HomePageALTWidget> {
                                       child: Image.network(
                                         valueOrDefault<String>(
                                           columnPropertiesRecord.mainImage,
-                                          'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
+                                          'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
                                         ),
                                         width: double.infinity,
                                         height: 190,
