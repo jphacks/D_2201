@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:math';
 
 class StarmapsWidget extends StatefulWidget {
   const StarmapsWidget({Key? key}) : super(key: key);
@@ -82,28 +83,50 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SelectionArea(
-                                  child: Text(
-                                '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              )),
-                              Center(
-                                child: Image.asset(
-                                    'assets/images/EveryStarryNightPlanisphere_Jewelry_Disk_4000px.png'),
-                              )
-                            ],
-                          ),
+                        InteractiveViewer(
+                          child: Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                              ),
+                              child: Stack(children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Transform.rotate(
+                                      angle: 45 * pi / 180,
+                                      child: Image.asset(
+                                          'assets/images/EveryStarryNightPlanisphere_Jewelry_Disk_4000px.png'),
+                                    ),
+                                    SelectionArea(
+                                        child: Text(
+                                      '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
+                                    )),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Transform.rotate(
+                                      angle: 0 * pi / 180,
+                                      child: Image.asset(
+                                          'assets/images/EveryStarryNightPlanisphere_Jewelry_Window_4000px.png'),
+                                    ),
+                                    SelectionArea(
+                                        child: Text(
+                                      '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
+                                    )),
+                                  ],
+                                ),
+                              ])),
                         ),
                         Container(
                           width: 100,

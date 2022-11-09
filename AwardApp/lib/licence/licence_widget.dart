@@ -118,7 +118,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    'Sentinel(仮)',
+                                    'Open Access',
                                     style: FlutterFlowTheme.of(context)
                                         .title3
                                         .override(
@@ -205,7 +205,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                       child: InkWell(
                         onTap: () async {
                           await launchURL(
-                              'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice');
+                              'https://hoshifuru.jp/EveryStarryNight/planisphere/ai/note.html#license');
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -236,7 +236,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    'Sentinel(仮)',
+                                    '星座早見盤素材 ベクター ai',
                                     style: FlutterFlowTheme.of(context)
                                         .title3
                                         .override(
@@ -262,7 +262,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 12, 0),
                                       child: Text(
-                                        'Copernicus Sentinel data 2022 for Sentinel data',
+                                        'Every Starry Night Planisphere ( hoshifuru.jp )',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -286,7 +286,7 @@ class _LicenceWidgetState extends State<LicenceWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'sentinel',
+                                    '星降る',
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
