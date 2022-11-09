@@ -67,5 +67,5 @@ for level in csvlist.keys():
     with open(outfilename_geojson1, 'w') as f:
         dump(ft_colct, f, separators=(',', ':'))
     df["score"] = scores
-    df.to_csv(outfilename_csv,index=True)
+    df.to_csv(outfilename_csv,index=False)
     print(level, "complete.")
