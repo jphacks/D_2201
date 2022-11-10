@@ -83,7 +83,7 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        InteractiveViewer(
+                        SingleChildScrollView(
                           child: Container(
                               width: 100,
                               height: 100,
@@ -128,30 +128,32 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                 ),
                               ])),
                         ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SelectionArea(
-                                  child: Text(
-                                '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              )),
-                              FlutterFlowWebView(
-                                url: '',
-                                bypass: false,
-                                height: 640,
-                                verticalScroll: false,
-                                horizontalScroll: false,
-                              ),
-                            ],
+                        SingleChildScrollView(
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SelectionArea(
+                                    child: Text(
+                                  '星座早見盤:Every Starry Night Planisphere ( hoshifuru.jp )',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                )),
+                                FlutterFlowWebView(
+                                  url: '',
+                                  bypass: false,
+                                  height: 640,
+                                  verticalScroll: false,
+                                  horizontalScroll: false,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
