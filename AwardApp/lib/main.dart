@@ -39,6 +39,27 @@ void main() async {
   });
 
   //print(globals.csvlist);
+  http.Response response = await http.get(
+      Uri.https('lfs-d2201.ashandf.net', '/data/cloud_all_latest_level2.csv'));
+
+  if (response.statusCode != 200) {
+    print('ERROR: ${response.statusCode}');
+    return;
+  }
+  String? str = response.body.toString();
+  //print(str);
+  int count = -1;
+  for (String line in str.split('\n')) {
+    List rows = line.split(','); // split by comma
+    if (count != -1) {
+      // print(count);
+      // print(rows);
+      if (count % 2 == 0) {
+        globals.cloudslist.add(rows);
+      }
+    }
+    count++;
+  }
   runApp(MyApp());
 }
 
