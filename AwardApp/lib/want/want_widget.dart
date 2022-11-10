@@ -457,8 +457,8 @@ class _WantWidgetState extends State<WantWidget> {
                           ),
                           SingleChildScrollView(
                             child: Container(
-                              width: 100,
-                              height: 100,
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,

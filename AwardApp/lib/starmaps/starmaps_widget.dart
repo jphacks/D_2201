@@ -85,8 +85,8 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                       children: [
                         SingleChildScrollView(
                           child: Container(
-                              width: 100,
-                              height: 100,
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
@@ -130,8 +130,8 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                         ),
                         SingleChildScrollView(
                           child: Container(
-                            width: 100,
-                            height: 100,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
