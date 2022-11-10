@@ -80,6 +80,7 @@ class _MapsWidgetState extends State<MapsWidget> {
   @override
   Widget build(BuildContext context) {
     List<List> csvlist = globals.csvlist;
+    List<List> cloudslist = globals.cloudslist;
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -198,7 +199,6 @@ class _MapsWidgetState extends State<MapsWidget> {
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
                             'polygon2',
-                          
                           ))
                   },
                   tileOverlays: {
