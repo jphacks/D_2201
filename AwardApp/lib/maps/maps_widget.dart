@@ -1,11 +1,9 @@
-import 'dart:async';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../globals.dart' as globals;
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as GoogleMaps;
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -38,48 +36,17 @@ class _MapsWidgetState extends State<MapsWidget> {
     return importList;
   }*/
 
-  Position? currentPosition;
-  late GoogleMaps.GoogleMapController _controller;
-  late StreamSubscription<Position> positionStream;
-  //初期位置
-  final GoogleMaps.CameraPosition _kGooglePlex =
-      const GoogleMaps.CameraPosition(
-          target: GoogleMaps.LatLng(34.54919625630112, 135.5063116098694),
-          zoom: 17, //ズーム
-          bearing: 0.0);
-
-  final LocationSettings locationSettings = const LocationSettings(
-    accuracy: LocationAccuracy.high, //正確性:highはAndroid(0-100m),iOS(10m)
-    distanceFilter: 100,
-  );
   @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
-
-    //位置情報が許可されていない時に許可をリクエストする
-    Future(() async {
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        await Geolocator.requestPermission();
-      }
-    });
-
-    //現在位置を更新し続ける
-    positionStream =
-        Geolocator.getPositionStream(locationSettings: locationSettings)
-            .listen((Position? position) {
-      currentPosition = position;
-      print(position == null
-          ? 'Unknown'
-          : '${position.latitude.toString()}, ${position.longitude.toString()}');
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     List<List> csvlist = globals.csvlist;
+    List<List> cloudslist = globals.cloudslist;
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -111,17 +78,14 @@ class _MapsWidgetState extends State<MapsWidget> {
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: GoogleMaps.GoogleMap(
-                  mapType: GoogleMaps.MapType.normal,
                   initialCameraPosition: GoogleMaps.CameraPosition(
                       //マップの初期位置を指定
                       zoom: 17, //ズーム
                       target: GoogleMaps.LatLng(
                           34.54919625630112, 135.5063116098694), //経度,緯度
-                      bearing: 0.0),
-                  myLocationEnabled: true, //現在位置をマップ上に表示
-                  onMapCreated: (GoogleMaps.GoogleMapController controller) {
-                    _controller = controller;
-                  },
+                      tilt: 45.0, //上下の角度
+                      bearing: 0.0), //指定した角度だけ回転する
+                  mapType: GoogleMaps.MapType.hybrid,
                   markers: {
                     GoogleMaps.Marker(
                       markerId: (GoogleMaps.MarkerId('marker1')),
@@ -149,7 +113,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                                   0)
                               .withOpacity(double.parse(csvlist[i][5]).round() /
                                   255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
-                          strokeWidth: 2, //線の太さ
+                          strokeWidth: 1, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
                             GoogleMaps.LatLng(double.parse(csvlist[i][2]),
@@ -168,34 +132,32 @@ class _MapsWidgetState extends State<MapsWidget> {
                     for (int i = 0; i < 2664; i++) //雲部分
                       GoogleMaps.Polygon(
                           strokeColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
+                                  double.parse(cloudslist[i][6]).round(),
                                   255,
                                   255,
                                   255)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                              .withOpacity(double.parse(cloudslist[i][6])
+                                      .round() /
                                   255), //Colors.pink.withOpacity(0.8), //線の色
                           fillColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
+                                  double.parse(csvlist[i][6]).round(),
                                   255,
                                   255,
                                   255)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                              .withOpacity(double.parse(cloudslist[i][6])
+                                      .round() /
                                   255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
-                          strokeWidth: 2, //線の太さ
+                          strokeWidth: 1, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][2]) + 0.05,
-                                double.parse(csvlist[i][4]) + 0.05),
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][2]) + 0.05,
-                                double.parse(csvlist[i][3]) + 0.05),
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][1]) + 0.05,
-                                double.parse(csvlist[i][3]) + 0.05),
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][1]) + 0.05,
-                                double.parse(csvlist[i][4]) + 0.05),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][3]),
+                                double.parse(cloudslist[i][5])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][3]),
+                                double.parse(cloudslist[i][4])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
+                                double.parse(cloudslist[i][4])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
+                                double.parse(cloudslist[i][5])),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
