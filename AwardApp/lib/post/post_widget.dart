@@ -78,7 +78,7 @@ class _PostWidgetState extends State<PostWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
           child: Column(
