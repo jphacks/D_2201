@@ -18,6 +18,7 @@ db = firestore.client()
 # 地点の定義
 city2pos = {
     #地点 : [lat,lon]
+    #"hamudai": [34.5450379, 135.5066057],
     "sapporo" :[43.06417,141.34694],
     "sendai" : [35.85694,139.64889],
     "tokyo" : [35.68944,139.69167],
@@ -32,6 +33,7 @@ city2pos = {
 dt_now = datetime.datetime.now()
 
 day = datetime.date.today()
+nowhour = dt_now.hour
 hour = dt_now.hour + 1 # 時間の切り上げ
 if(hour>=24):
   hour -= 24
@@ -40,18 +42,33 @@ if( hour>6 and hour<18): # 昼間の場合は日没時(18時)のデータを取�
 min =0
 
 # データの取得とfirebaseへの書き込み
-for city in city2pos.keys():
+for city in ["tokyo"]:
     # 取得
-    url = 'https://livlog.xyz/hoshimiru/constellation?lat='+str(city2pos[city][0])+'&lng='+str(city2pos[city][1])+'&date='+str(day)+'&hour='+str(hour)+'&min='+str(min)+'&id=&disp='
+    url = 'https://livlog.xyz/hoshimiru/constellation?lat='+str(city2pos[city][0])+'&lng='+str(city2pos[city][1])+'&date='+str(day)+'&hour='+str(hour)+'&min='+str(min)+'&id=&disp=off'
     res = requests.get(url)
     data = json.loads(res.text)
     stardata = {}
+    '''
     for j in range(len(data['result'])):
         stardata[data['result'][j]['jpName']] = data['result'][j]['direction']
-    # 書き込み
+        print( data['result'][j])
+        break
+    print(city)
+    print(stardata)
+    '''
     output = {
-        u'name': city,
+        u'Name': city,
+        u'update': dt_now.strftime('%Y-%m-%d ') + str(nowhour),
         u'time': dt_now.strftime('%Y-%m-%d ') + str(hour),
-        u'data': stardata
+        u'latitude': city2pos[city][0],
+        u'longitude': city2pos[city][1],
     }
-    db.collection(u'constellation').document(city).set(output)
+    db.collection(u'ccity').document(city).set(output)
+    notfound = set(range(1,89))
+    for astar in range(len(data['result'])):
+      db.collection(u'constellation').document(data['result'][astar]['id']).set(data['result'][astar])
+      #db.collection(u'constellation').document(city).collection(u'constellation').document(data['result'][astar]['id']).set(data['result'][astar])
+      notfound.remove(int(data['result'][astar]['id']))
+    for astar in notfound:
+      db.collection(u'constellation').document(str(astar)).delete()
+      #db.collection(u'constellation').document(city).collection(u'constellation').document(str(astar)).delete()
