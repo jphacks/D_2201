@@ -165,41 +165,40 @@ class _MapsWidgetState extends State<MapsWidget> {
                             //一意なID
                             'polygon1',
                           )),
-                    for (int i = 0; i < 2664; i++) //雲部分
+                    for (int i = 0; i < 2664; i++) //雲部分 2664
                       GoogleMaps.Polygon(
                           strokeColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
+                                  double.parse(cloudslist[i][5]).round(),
                                   255,
                                   255,
                                   255)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                              .withOpacity(double.parse(cloudslist[i][5])
+                                      .round() /
                                   255), //Colors.pink.withOpacity(0.8), //線の色
                           fillColor: Color.fromARGB(
                                   double.parse(csvlist[i][5]).round(),
                                   255,
                                   255,
                                   255)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                              .withOpacity(double.parse(cloudslist[i][5])
+                                      .round() /
                                   255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
-                          strokeWidth: 2, //線の太さ
+                          strokeWidth: 1, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][2]) + 0.05,
-                                double.parse(csvlist[i][4]) + 0.05),
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][2]) + 0.05,
-                                double.parse(csvlist[i][3]) + 0.05),
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][1]) + 0.05,
-                                double.parse(csvlist[i][3]) + 0.05),
-                            GoogleMaps.LatLng(
-                                double.parse(csvlist[i][1]) + 0.05,
-                                double.parse(csvlist[i][4]) + 0.05),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
+                                double.parse(cloudslist[i][4])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
+                                double.parse(cloudslist[i][3])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][1]),
+                                double.parse(cloudslist[i][3])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][1]),
+                                double.parse(cloudslist[i][4])),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID
                             'polygon2',
+                          
                           ))
                   },
                   tileOverlays: {
