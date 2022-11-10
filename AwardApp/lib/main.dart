@@ -18,9 +18,10 @@ import 'dart:io';
 import 'dart:convert';
 import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' show parse;
 
 void main() async {
-  int count = 0;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
@@ -31,7 +32,6 @@ void main() async {
       if (rows[0] != "index") {
         if (int.parse(rows[0]) % 2 == 0) {
           globals.csvlist.add(rows);
-          count++;
         }
       }
     }
