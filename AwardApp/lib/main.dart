@@ -18,29 +18,84 @@ import 'dart:io';
 import 'dart:convert';
 import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' show parse;
+import 'package:file_selector/file_selector.dart';
+import 'package:dio/dio.dart';
+import 'package:csv/csv.dart';
 
 void main() async {
-  int count = 0;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
   FFAppState(); // Initialize FFAppState
+
   rootBundle.loadString('assets/csv/osaka-score.csv').then((String csv) {
-    for (String line in csv.split('\n')) {
-      List rows = line.split(','); // split by comma
+    for (String line1 in csv.split('\n')) {
+      List rows = line1.split(','); // split by comma
       if (rows[0] != "index") {
         if (int.parse(rows[0]) % 2 == 0) {
           globals.csvlist.add(rows);
-          count++;
         }
       }
     }
-    // print(count);
   });
+  http.Response response = await http.get(
+      Uri.https('lfs-d2201.ashandf.net', '/data/cloud_all_latest_level2.csv'));
 
-  //print(globals.csvlist);
+  if (response.statusCode != 200) {
+    print('ERROR: ${response.statusCode}');
+    return;
+  }
+  String? str = response.body.toString();
+  //print(str);
+  int count = -1;
+  for (String line in str.split('\n')) {
+    List rows = line.split(','); // split by comma
+    if (count != -1) {
+      print(count);
+      print(rows);
+      if (count % 2 == 0) {
+        globals.cloudslist.add(rows);
+      }
+    }
+    count++;
+  }
+  print(globals.cloudslist[0][4]);
+  print(globals.cloudslist[120][4]);
+
   runApp(MyApp());
 }
+//final url = 'https://lfs-d2201.ashandf.net/data/cloud_all_latest_level2.csv';
+//final target = Uri.parse(url);
+//final response = await http.get(target);
+
+//String? path = await getSavePath();
+
+//print(response.body);//出力される
+
+//String csv = const ListToCsvConverter().convert(str);
+
+//rootBundle.loadString(path).then((String csv) {
+/*
+Future getDownload() async {
+  final dio = Dio();
+  //dio.options.headers = {'Authorization': 'Bearer $token'};
+  final res = await dio.get('http://localhost:3000/api/test/downloads');
+
+  String? path = await getSavePath();
+  String str = path.toString();
+
+
+  if (path == null) {
+    return;
+  } else {
+    const String mimeType = 'text/csv';
+    final file =
+        XFile.fromData(res.data!, mimeType: mimeType, name: 'clouds.csv');
+    await file.saveTo(path);
+  }
+}*/
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
