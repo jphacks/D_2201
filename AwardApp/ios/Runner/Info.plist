@@ -59,6 +59,8 @@
       <string>In order to upload media, this app requires permission to access the photo library.</string>
 
 
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to location when open.</string>
 
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
