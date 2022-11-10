@@ -55,7 +55,11 @@ for level in csvlist.keys():
         ]])
         lat = (lat_min[i] + lat_max[i])/2
         lon = (lon_min[i] + lon_max[i])/2
-        w = mgr.weather_at_coords(lat, lon).weather 
+        try:
+            w = mgr.weather_at_coords(lat, lon).weather
+        except Exception as e:
+            print(e)
+
         prescore = 100 - int(w.clouds)
         scores.append(prescore)
         ft = Feature(geometry = geopoly, properties = {'score': prescore})
