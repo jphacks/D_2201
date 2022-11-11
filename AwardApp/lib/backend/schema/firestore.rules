@@ -37,17 +37,15 @@ service cloud.firestore {
     }
 
     match /users/{parent}/CollectedStamps/{document} {
-      allow create: if request.auth.uid == parent;
-      allow read: if true;
-      allow write: if request.auth.uid == parent;
-      allow delete: if false;
-    }
-
-    match /constellation/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if false;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
+
+    match /{path=**}/CollectedStamps/{document} {
+      allow read: if true;
+    }
+
   }
 }

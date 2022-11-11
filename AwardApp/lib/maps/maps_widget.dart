@@ -117,7 +117,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                       //マップの初期位置を指定
                       zoom: 17, //ズーム
                       target: GoogleMaps.LatLng(
-                          34.54919625630112, 135.5063116098694), //経度,緯度
+                          35.69263135901164, 139.7582491687784), //経度,緯度
                       bearing: 0.0),
                   myLocationEnabled: true, //現在位置をマップ上に表示
                   onMapCreated: (GoogleMaps.GoogleMapController controller) {
@@ -127,9 +127,9 @@ class _MapsWidgetState extends State<MapsWidget> {
                     GoogleMaps.Marker(
                       markerId: (GoogleMaps.MarkerId('marker1')),
                       position: GoogleMaps.LatLng(
-                          34.54919625630112, 135.5063116098694),
-                      infoWindow:
-                          GoogleMaps.InfoWindow(title: '日本のヘソ', snippet: 'ハム大'),
+                          35.69263135901164, 139.7582491687784),
+                      infoWindow: GoogleMaps.InfoWindow(
+                          title: 'JPhacks', snippet: '一橋講堂'),
                     )
                   },
 
