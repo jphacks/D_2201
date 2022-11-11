@@ -43,6 +43,8 @@ abstract class ConstellationRecord
 
   double? get directionNum;
 
+  String? get originalImage;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -63,7 +65,8 @@ abstract class ConstellationRecord
     ..starIcon = ''
     ..starImage = ''
     ..altitudeNum = 0.0
-    ..directionNum = 0.0;
+    ..directionNum = 0.0
+    ..originalImage = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('constellation');
@@ -104,6 +107,7 @@ Map<String, dynamic> createConstellationRecordData({
   String? starImage,
   double? altitudeNum,
   double? directionNum,
+  String? originalImage,
 }) {
   final firestoreData = serializers.toFirestore(
     ConstellationRecord.serializer,
@@ -124,7 +128,8 @@ Map<String, dynamic> createConstellationRecordData({
         ..starIcon = starIcon
         ..starImage = starImage
         ..altitudeNum = altitudeNum
-        ..directionNum = directionNum,
+        ..directionNum = directionNum
+        ..originalImage = originalImage,
     ),
   );
 

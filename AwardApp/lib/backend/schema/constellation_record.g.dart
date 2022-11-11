@@ -137,6 +137,13 @@ class _$ConstellationRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
+    value = object.originalImage;
+    if (value != null) {
+      result
+        ..add('originalImage')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -224,6 +231,10 @@ class _$ConstellationRecordSerializer
           result.directionNum = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double?;
           break;
+        case 'originalImage':
+          result.originalImage = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -271,6 +282,8 @@ class _$ConstellationRecord extends ConstellationRecord {
   @override
   final double? directionNum;
   @override
+  final String? originalImage;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ConstellationRecord(
@@ -294,6 +307,7 @@ class _$ConstellationRecord extends ConstellationRecord {
       this.starImage,
       this.altitudeNum,
       this.directionNum,
+      this.originalImage,
       this.ffRef})
       : super._();
 
@@ -326,6 +340,7 @@ class _$ConstellationRecord extends ConstellationRecord {
         starImage == other.starImage &&
         altitudeNum == other.altitudeNum &&
         directionNum == other.directionNum &&
+        originalImage == other.originalImage &&
         ffRef == other.ffRef;
   }
 
@@ -348,26 +363,30 @@ class _$ConstellationRecord extends ConstellationRecord {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        altitude
+                                                                        $jc(
+                                                                            0,
+                                                                            altitude
+                                                                                .hashCode),
+                                                                        confirmed
                                                                             .hashCode),
-                                                                    confirmed
+                                                                    content
                                                                         .hashCode),
-                                                                content
+                                                                direction
                                                                     .hashCode),
-                                                            direction.hashCode),
-                                                        drowing.hashCode),
-                                                    eclipticalFlag.hashCode),
-                                                enName.hashCode),
-                                            id.hashCode),
-                                        jpName.hashCode),
-                                    origin.hashCode),
-                                ptolemyFlag.hashCode),
-                            roughly.hashCode),
-                        starIcon.hashCode),
-                    starImage.hashCode),
-                altitudeNum.hashCode),
-            directionNum.hashCode),
+                                                            drowing.hashCode),
+                                                        eclipticalFlag
+                                                            .hashCode),
+                                                    enName.hashCode),
+                                                id.hashCode),
+                                            jpName.hashCode),
+                                        origin.hashCode),
+                                    ptolemyFlag.hashCode),
+                                roughly.hashCode),
+                            starIcon.hashCode),
+                        starImage.hashCode),
+                    altitudeNum.hashCode),
+                directionNum.hashCode),
+            originalImage.hashCode),
         ffRef.hashCode));
   }
 
@@ -390,6 +409,7 @@ class _$ConstellationRecord extends ConstellationRecord {
           ..add('starImage', starImage)
           ..add('altitudeNum', altitudeNum)
           ..add('directionNum', directionNum)
+          ..add('originalImage', originalImage)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -464,6 +484,11 @@ class ConstellationRecordBuilder
   double? get directionNum => _$this._directionNum;
   set directionNum(double? directionNum) => _$this._directionNum = directionNum;
 
+  String? _originalImage;
+  String? get originalImage => _$this._originalImage;
+  set originalImage(String? originalImage) =>
+      _$this._originalImage = originalImage;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -491,6 +516,7 @@ class ConstellationRecordBuilder
       _starImage = $v.starImage;
       _altitudeNum = $v.altitudeNum;
       _directionNum = $v.directionNum;
+      _originalImage = $v.originalImage;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -530,6 +556,7 @@ class ConstellationRecordBuilder
             starImage: starImage,
             altitudeNum: altitudeNum,
             directionNum: directionNum,
+            originalImage: originalImage,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
