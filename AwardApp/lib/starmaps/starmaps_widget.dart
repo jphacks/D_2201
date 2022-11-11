@@ -74,15 +74,6 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            SelectionArea(
-                                child: Text(
-                              valueOrDefault<String>(
-                                dateTimeFormat('M/d h:mm a', datePicked),
-                                dateTimeFormat(
-                                    'M/d h:mm a', getCurrentTimestamp),
-                              ),
-                              style: FlutterFlowTheme.of(context).bodyText1,
-                            )),
                             Stack(
                               children: [
                                 Padding(
@@ -196,14 +187,22 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Transform.rotate(
-                                    angle: double.parse(valueOrDefault<String>(
-                                                dateTimeFormat(
-                                                    'M/d h:mm a', datePicked),
-                                                dateTimeFormat('M/d h:mm a',
-                                                    getCurrentTimestamp))
-                                            .substring(1, 2)) /
-                                        12 *
-                                        180 *
+                                    angle: (-(double.parse(valueOrDefault<String>(dateTimeFormat('MM/dd hh:mm a', datePicked), dateTimeFormat('MM/dd hh:mm a', getCurrentTimestamp)).replaceAll(RegExp(r"[^0-9]"), "").substring(0, 2)) * 30 +
+                                                double.parse(valueOrDefault<String>(dateTimeFormat('MM/dd hh:mm a', datePicked), dateTimeFormat('MM/dd hh:mm a', getCurrentTimestamp))
+                                                    .replaceAll(
+                                                        RegExp(r"[^0-9]"), "")
+                                                    .substring(2, 4)) -
+                                                30 -
+                                                267) +
+                                            (double.parse(valueOrDefault<String>(
+                                                            dateTimeFormat(
+                                                                'MM/dd hh:mm',
+                                                                datePicked),
+                                                            dateTimeFormat('MM/dd hh:mm', getCurrentTimestamp))
+                                                        .replaceAll(RegExp(r"[^0-9]"), "")
+                                                        .substring(4, 6)) +
+                                                    double.parse(valueOrDefault<String>(dateTimeFormat('MM/dd hh:mm', datePicked), dateTimeFormat('MM/dd hh:mm', getCurrentTimestamp)).replaceAll(RegExp(r"[^0-9]"), "").substring(6, 8)) / 60) *
+                                                15) *
                                         pi /
                                         180,
                                     child: Image.asset(
@@ -300,8 +299,7 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                   child: Image.network(
-                                                    listViewConstellationRecord
-                                                        .starImage!,
+                                                    'https://images.unsplash.com/photo-1574914629385-46448b767aec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bGF0dGV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
                                                     width: 70,
                                                     height: 100,
                                                     fit: BoxFit.cover,

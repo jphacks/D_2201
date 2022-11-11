@@ -192,7 +192,10 @@ class _SearchPropertiesWidgetState extends State<SearchPropertiesWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: StreamBuilder<List<PropertiesRecord>>(
-                  stream: queryPropertiesRecord(),
+                  stream: queryPropertiesRecord(
+                    queryBuilder: (propertiesRecord) => propertiesRecord
+                        .where('propertyAddress', isEqualTo: widget.searchTerm),
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -256,7 +259,7 @@ class _SearchPropertiesWidgetState extends State<SearchPropertiesWidget> {
                                   Hero(
                                     tag: valueOrDefault<String>(
                                       listViewPropertiesRecord.mainImage,
-                                      'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png' +
+                                      'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG' +
                                           '$listViewIndex',
                                     ),
                                     transitionOnUserGestures: true,
@@ -270,7 +273,7 @@ class _SearchPropertiesWidgetState extends State<SearchPropertiesWidget> {
                                       child: CachedNetworkImage(
                                         imageUrl: valueOrDefault<String>(
                                           listViewPropertiesRecord.mainImage,
-                                          'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                          'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
                                         ),
                                         width: double.infinity,
                                         height: 190,
