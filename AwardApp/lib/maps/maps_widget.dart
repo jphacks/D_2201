@@ -115,7 +115,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                   mapType: GoogleMaps.MapType.normal,
                   initialCameraPosition: GoogleMaps.CameraPosition(
                       //マップの初期位置を指定
-                      zoom: 17, //ズーム
+                      zoom: 10, //ズーム
                       target: GoogleMaps.LatLng(
                           34.54919625630112, 135.5063116098694), //経度,緯度
                       bearing: 0.0),
@@ -134,22 +134,46 @@ class _MapsWidgetState extends State<MapsWidget> {
                   },
 
                   polygons: {
+                    for (int i = 0; i < 2664; i++) //雲部分
+                      GoogleMaps.Polygon(
+                          strokeColor: Color.fromARGB(
+                              (double.parse(csvlist[i][5]) / 4).round(),
+                              255,
+                              255,
+                              255), //Colors.pink.withOpacity(0.8), //線の色
+                          fillColor: Color.fromARGB(
+                              (double.parse(csvlist[i][5]) / 4).round(),
+                              255,
+                              255,
+                              255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
+                          strokeWidth: 1, //線の太さ
+                          points: [
+                            //ポリゴンで囲う地点
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
+                                double.parse(cloudslist[i][4])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
+                                double.parse(cloudslist[i][3])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][1]),
+                                double.parse(cloudslist[i][3])),
+                            GoogleMaps.LatLng(double.parse(cloudslist[i][1]),
+                                double.parse(cloudslist[i][4])),
+                          ],
+                          polygonId: GoogleMaps.PolygonId(
+                            //一意なID
+                            'polygon2',
+                          )),
                     for (int i = 0; i < 2664; i++) //光量
                       GoogleMaps.Polygon(
                           strokeColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
-                                  255,
-                                  255 - double.parse(csvlist[i][5]).round(),
-                                  0)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
-                                  255), //Colors.pink.withOpacity(0.8), //線の色
+                              101 - double.parse(csvlist[i][5]).round(),
+                              255,
+                              255 - double.parse(csvlist[i][5]).round(),
+                              0), //Colors.pink.withOpacity(0.8), //線の色
                           fillColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
-                                  255,
-                                  255 - double.parse(csvlist[i][5]).round(),
-                                  0)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
-                                  255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
+                              101 - double.parse(csvlist[i][5]).round(),
+                              255,
+                              255 - double.parse(csvlist[i][5]).round(),
+                              0), // Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
@@ -166,40 +190,6 @@ class _MapsWidgetState extends State<MapsWidget> {
                             //一意なID
                             'polygon1',
                           )),
-                    for (int i = 0; i < 2664; i++) //雲部分 2664
-                      GoogleMaps.Polygon(
-                          strokeColor: Color.fromARGB(
-                                  double.parse(cloudslist[i][5]).round(),
-                                  255,
-                                  255,
-                                  255)
-                              .withOpacity(double.parse(cloudslist[i][5])
-                                      .round() /
-                                  255), //Colors.pink.withOpacity(0.8), //線の色
-                          fillColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
-                                  255,
-                                  255,
-                                  255)
-                              .withOpacity(double.parse(cloudslist[i][5])
-                                      .round() /
-                                  255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
-                          strokeWidth: 1, //線の太さ
-                          points: [
-                            //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
-                                double.parse(cloudslist[i][4])),
-                            GoogleMaps.LatLng(double.parse(cloudslist[i][2]),
-                                double.parse(cloudslist[i][3])),
-                            GoogleMaps.LatLng(double.parse(cloudslist[i][1]),
-                                double.parse(cloudslist[i][3])),
-                            GoogleMaps.LatLng(double.parse(cloudslist[i][1]),
-                                double.parse(cloudslist[i][4])),
-                          ],
-                          polygonId: GoogleMaps.PolygonId(
-                            //一意なID
-                            'polygon2',
-                          ))
                   },
                   tileOverlays: {
                     GoogleMaps.TileOverlay(
