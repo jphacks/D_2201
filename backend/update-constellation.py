@@ -9,6 +9,7 @@ import datetime
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+import pandas as pd
 
 # firebaseのデータベース設定
 cred = credentials.Certificate(os.getenv('FIREBASE_KEY_PATH'))
@@ -41,9 +42,23 @@ if( hour>6 and hour<18): # 昼間の場合は日没時(18時)のデータを取�
   hour = 18
 min =0
 
-# データの取得とfirebaseへの書き込み
+# 星座リストを取得
+starlist = pd.read_csv("https://jphacks.github.io/D_2201/data/starlist.csv")
+# 星座画像リスト(辞書)を生成
+starname = list(starlist['name'])
+id2img = {}
+for id in range(1,89):
+  url = "https://jphacks.github.io/D_2201/data/constellation/" + starname[id-1] + "座.png"
+  res = requests.get(url)
+  if res.status_code == 200:
+    id2img[id] = url
+    print(starname[id-1])
+  else: #画像が無い場合
+    url = "https://jphacks.github.io/D_2201/data/とっとこ公大郎.png"
+    id2img[id] = url
+
+# データ取得＆書き込み
 for city in ["tokyo"]:
-    # 取得
     url = 'https://livlog.xyz/hoshimiru/constellation?lat='+str(city2pos[city][0])+'&lng='+str(city2pos[city][1])+'&date='+str(day)+'&hour='+str(hour)+'&min='+str(min)+'&id=&disp=off'
     res = requests.get(url)
     data = json.loads(res.text)
@@ -66,9 +81,11 @@ for city in ["tokyo"]:
     db.collection(u'ccity').document(city).set(output)
     notfound = set(range(1,89))
     for astar in range(len(data['result'])):
+      data['result'][astar]["originalImage"]= id2img[int(data['result'][astar]['id'])]
       db.collection(u'constellation').document(data['result'][astar]['id']).set(data['result'][astar])
       #db.collection(u'constellation').document(city).collection(u'constellation').document(data['result'][astar]['id']).set(data['result'][astar])
       notfound.remove(int(data['result'][astar]['id']))
     for astar in notfound:
       db.collection(u'constellation').document(str(astar)).delete()
       #db.collection(u'constellation').document(city).collection(u'constellation').document(str(astar)).delete()
+    print(len(notfound))
