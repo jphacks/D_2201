@@ -169,7 +169,7 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
             ),
           );
         }
-        List<ReviewsRecord> WantSpotDetailsReviewsRecordList = snapshot.data!;
+        List<ReviewsRecord> wantSpotDetailsReviewsRecordList = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -206,26 +206,27 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
                                             type: PageTransitionType.fade,
                                             child: FlutterFlowExpandedImageView(
                                               image: CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
+                                                imageUrl: widget
+                                                    .propertyRef!.mainImage!,
                                                 fit: BoxFit.contain,
                                               ),
                                               allowRotation: false,
-                                              tag: 'mainImage',
+                                              tag: widget
+                                                  .propertyRef!.mainImage!,
                                               useHeroAnimation: true,
                                             ),
                                           ),
                                         );
                                       },
                                       child: Hero(
-                                        tag: 'mainImage',
+                                        tag: widget.propertyRef!.mainImage!,
                                         transitionOnUserGestures: true,
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(16),
                                           child: CachedNetworkImage(
                                             imageUrl:
-                                                'https://drive.google.com/uc?id=13aJ-EtZ_AxJqCh_caOc9pvvQ93D0IOrr&.JPG',
+                                                widget.propertyRef!.mainImage!,
                                             width: double.infinity,
                                             height: double.infinity,
                                             fit: BoxFit.cover,
@@ -351,7 +352,7 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
                                     EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                                 child: Text(
                                   functions.ratingSummaryList(
-                                      WantSpotDetailsReviewsRecordList
+                                      wantSpotDetailsReviewsRecordList
                                           .toList()),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText2
@@ -839,7 +840,7 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
                         ],
                       ),
                       if (formatNumber(
-                            WantSpotDetailsReviewsRecordList.length,
+                            wantSpotDetailsReviewsRecordList.length,
                             formatType: FormatType.decimal,
                             decimalType: DecimalType.periodDecimal,
                           ) ==
