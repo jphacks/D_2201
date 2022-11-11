@@ -187,21 +187,22 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Transform.rotate(
-                                    angle: (-(double.parse(valueOrDefault<String>(dateTimeFormat('MM/dd hh:mm a', datePicked), dateTimeFormat('MM/dd hh:mm a', getCurrentTimestamp)).replaceAll(RegExp(r"[^0-9]"), "").substring(0, 2)) * 30 +
-                                                double.parse(valueOrDefault<String>(dateTimeFormat('MM/dd hh:mm a', datePicked), dateTimeFormat('MM/dd hh:mm a', getCurrentTimestamp))
+                                    angle: (-(double.parse(valueOrDefault<String>(dateTimeFormat('yy/MM/dd HH:mm', datePicked), dateTimeFormat('yy/MM/dd HH:mm', getCurrentTimestamp)).replaceAll(RegExp(r"[^0-9]"), "").substring(2, 4)) * 30 +
+                                                double.parse(valueOrDefault<String>(dateTimeFormat('yy/MM/dd HH:mm', datePicked), dateTimeFormat('yy/MM/dd HH:mm', getCurrentTimestamp))
                                                     .replaceAll(
                                                         RegExp(r"[^0-9]"), "")
-                                                    .substring(2, 4)) -
+                                                    .substring(4, 6)) -
                                                 30 -
-                                                267) +
+                                                267 +
+                                                6) -
                                             (double.parse(valueOrDefault<String>(
                                                             dateTimeFormat(
-                                                                'MM/dd hh:mm',
+                                                                'yy/MM/dd HH:mm',
                                                                 datePicked),
-                                                            dateTimeFormat('MM/dd hh:mm', getCurrentTimestamp))
+                                                            dateTimeFormat('yy/MM/dd HH:mm', getCurrentTimestamp))
                                                         .replaceAll(RegExp(r"[^0-9]"), "")
-                                                        .substring(4, 6)) +
-                                                    double.parse(valueOrDefault<String>(dateTimeFormat('MM/dd hh:mm', datePicked), dateTimeFormat('MM/dd hh:mm', getCurrentTimestamp)).replaceAll(RegExp(r"[^0-9]"), "").substring(6, 8)) / 60) *
+                                                        .substring(6, 8)) +
+                                                    double.parse(valueOrDefault<String>(dateTimeFormat('yy/MM/dd HH:mm', datePicked), dateTimeFormat('yy/MM/dd HH:mm', getCurrentTimestamp)).replaceAll(RegExp(r"[^0-9]"), "").substring(8, 10)) / 60) *
                                                 15) *
                                         pi /
                                         180,
