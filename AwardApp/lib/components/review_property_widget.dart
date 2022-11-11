@@ -11,8 +11,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ReviewTripWidget extends StatefulWidget {
-  const ReviewTripWidget({
+class ReviewPropertyWidget extends StatefulWidget {
+  const ReviewPropertyWidget({
     Key? key,
     this.propertyReference,
     this.favotitesDetails,
@@ -22,10 +22,10 @@ class ReviewTripWidget extends StatefulWidget {
   final FavoritesRecord? favotitesDetails;
 
   @override
-  _ReviewTripWidgetState createState() => _ReviewTripWidgetState();
+  _ReviewPropertyWidgetState createState() => _ReviewPropertyWidgetState();
 }
 
-class _ReviewTripWidgetState extends State<ReviewTripWidget>
+class _ReviewPropertyWidgetState extends State<ReviewPropertyWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'buttonOnPageLoadAnimation': AnimationInfo(
@@ -123,7 +123,7 @@ class _ReviewTripWidgetState extends State<ReviewTripWidget>
                   children: [
                     Expanded(
                       child: Text(
-                        'Rate Your Trip',
+                        'Rate Your Spot',
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).title3,
                       ),

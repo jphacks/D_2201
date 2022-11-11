@@ -7,6 +7,8 @@ export 'spot_details/spot_details_widget.dart' show SpotDetailsWidget;
 export 'search_properties/search_properties_widget.dart'
     show SearchPropertiesWidget;
 export 'want/want_widget.dart' show WantWidget;
+export 'want_spot_details/want_spot_details_widget.dart'
+    show WantSpotDetailsWidget;
 export 'maps/maps_widget.dart' show MapsWidget;
 export 'starmaps/starmaps_widget.dart' show StarmapsWidget;
 export 'spot_review/spot_review_widget.dart' show SpotReviewWidget;

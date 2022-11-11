@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/review_property_widget.dart';
+import '../components/review_trip_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -83,9 +84,8 @@ class _WantWidgetState extends State<WantWidget> {
                               children: [
                                 Container(
                                   width: MediaQuery.of(context).size.width,
-                                  height:
-                                      MediaQuery.of(context).size.width * 0.4 +
-                                          26.5,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.215,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFACCFF7),
                                   ),
@@ -130,8 +130,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                 .width,
                                             height: MediaQuery.of(context)
                                                     .size
-                                                    .width *
-                                                0.4,
+                                                    .height *
+                                                0.185,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1007,8 +1007,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                 .width,
                                             height: MediaQuery.of(context)
                                                     .size
-                                                    .width *
-                                                0.4,
+                                                    .height *
+                                                0.185,
                                             decoration: BoxDecoration(),
                                             child: StreamBuilder<
                                                 List<CollectedStampsRecord>>(
@@ -1156,10 +1156,14 @@ class _WantWidgetState extends State<WantWidget> {
                                         0, 8, 0, 0),
                                     child: StreamBuilder<List<FavoritesRecord>>(
                                       stream: queryFavoritesRecord(
-                                          queryBuilder: (favoritesRecord) =>
-                                              favoritesRecord.where('userRef',
-                                                  isEqualTo:
-                                                      currentUserReference)),
+                                        queryBuilder: (favoritesRecord) =>
+                                            favoritesRecord
+                                                .where('userRef',
+                                                    isEqualTo:
+                                                        currentUserReference)
+                                                .where('visited',
+                                                    isNotEqualTo: true),
+                                      ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -1658,12 +1662,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                       .spaceBetween,
                                                               children: [
                                                                 Container(
-                                                                  width: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width *
-                                                                      0.5,
-                                                                  height: 40,
+                                                                  width: 175,
+                                                                  height: 20,
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
