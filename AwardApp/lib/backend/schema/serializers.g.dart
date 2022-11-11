@@ -9,6 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AmenititiesRecord.serializer)
       ..add(CollectedStampsRecord.serializer)
+      ..add(ConstellationRecord.serializer)
       ..add(FavoritesRecord.serializer)
       ..add(PropertiesRecord.serializer)
       ..add(ReviewsRecord.serializer)

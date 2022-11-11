@@ -25,6 +25,20 @@
         {
           "fieldPath": "visited",
           "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "favorites",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userRef",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "visited",
+          "order": "ASCENDING"
         },
         {
           "fieldPath": "checkDate",

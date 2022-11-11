@@ -10,6 +10,7 @@ import 'schema/reviews_record.dart';
 import 'schema/amenitities_record.dart';
 import 'schema/favorites_record.dart';
 import 'schema/collected_stamps_record.dart';
+import 'schema/constellation_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -23,6 +24,7 @@ export 'schema/reviews_record.dart';
 export 'schema/amenitities_record.dart';
 export 'schema/favorites_record.dart';
 export 'schema/collected_stamps_record.dart';
+export 'schema/constellation_record.dart';
 
 /// Functions to query PropertiesRecords (as a Stream and as a Future).
 Stream<List<PropertiesRecord>> queryPropertiesRecord({
@@ -273,6 +275,48 @@ Future<FFFirestorePage<CollectedStampsRecord>> queryCollectedStampsRecordPage({
     queryCollectionPage(
       CollectedStampsRecord.collection(parent),
       CollectedStampsRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ConstellationRecords (as a Stream and as a Future).
+Stream<List<ConstellationRecord>> queryConstellationRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ConstellationRecord.collection,
+      ConstellationRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ConstellationRecord>> queryConstellationRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ConstellationRecord.collection,
+      ConstellationRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ConstellationRecord>> queryConstellationRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      ConstellationRecord.collection,
+      ConstellationRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,
