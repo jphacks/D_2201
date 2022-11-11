@@ -119,19 +119,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : WantWidget(),
             ),
             FFRoute(
-              name: 'WantSpotDetails',
-              path: 'WantSpotDetails',
-              asyncParams: {
-                'propertyRef':
-                    getDoc('properties', PropertiesRecord.serializer),
-              },
-              builder: (context, params) => WantSpotDetailsWidget(
-                propertyRef: params.getParam('propertyRef', ParamType.Document),
-                favotityRef: params.getParam('favotityRef',
-                    ParamType.DocumentReference, false, 'favorites'),
-              ),
-            ),
-            FFRoute(
               name: 'Maps',
               path: 'maps',
               builder: (context, params) => params.isEmpty

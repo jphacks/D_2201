@@ -7,7 +7,6 @@ import 'reviews_record.dart';
 import 'amenitities_record.dart';
 import 'favorites_record.dart';
 import 'collected_stamps_record.dart';
-import 'constellation_record.dart';
 
 import 'index.dart';
 
@@ -24,7 +23,6 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   AmenititiesRecord,
   FavoritesRecord,
   CollectedStampsRecord,
-  ConstellationRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
