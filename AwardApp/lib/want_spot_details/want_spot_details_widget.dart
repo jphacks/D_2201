@@ -812,7 +812,7 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                '156km',
+                                widget.propertyRef!.propertyAddress!,
                                 style: FlutterFlowTheme.of(context)
                                     .title3
                                     .override(
