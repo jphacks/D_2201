@@ -203,26 +203,27 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                                             type: PageTransitionType.fade,
                                             child: FlutterFlowExpandedImageView(
                                               image: CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                                imageUrl: widget
+                                                    .propertyRef!.mainImage!,
                                                 fit: BoxFit.contain,
                                               ),
                                               allowRotation: false,
-                                              tag: 'mainImage',
+                                              tag: widget
+                                                  .propertyRef!.mainImage!,
                                               useHeroAnimation: true,
                                             ),
                                           ),
                                         );
                                       },
                                       child: Hero(
-                                        tag: 'mainImage',
+                                        tag: widget.propertyRef!.mainImage!,
                                         transitionOnUserGestures: true,
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(16),
                                           child: CachedNetworkImage(
                                             imageUrl:
-                                                'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                                widget.propertyRef!.mainImage!,
                                             width: double.infinity,
                                             height: double.infinity,
                                             fit: BoxFit.cover,
@@ -807,7 +808,7 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                '156km',
+                                widget.propertyRef!.propertyAddress!,
                                 style: FlutterFlowTheme.of(context)
                                     .title3
                                     .override(
@@ -874,6 +875,7 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                                   propatyRef: widget.propertyRef!.reference,
                                   userRef: currentUserReference,
                                   checkDate: getCurrentTimestamp,
+                                  visited: false,
                                 );
                                 await FavoritesRecord.collection
                                     .doc()
