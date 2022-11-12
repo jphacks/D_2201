@@ -127,9 +127,9 @@ class _MapsWidgetState extends State<MapsWidget> {
                     GoogleMaps.Marker(
                       markerId: (GoogleMaps.MarkerId('marker1')),
                       position: GoogleMaps.LatLng(
-                          34.54919625630112, 135.5063116098694),
+                          35.692596504940184, 139.75829208412094),
                       infoWindow:
-                          GoogleMaps.InfoWindow(title: '日本のヘソ', snippet: 'ハム大'),
+                          GoogleMaps.InfoWindow(title: '一橋講堂', snippet: 'JPhacks会場'),
                     )
                   },
 
