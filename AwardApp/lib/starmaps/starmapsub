@@ -256,7 +256,8 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                               child: Image.network(
-                                                'https://images.unsplash.com/photo-1574914629385-46448b767aec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bGF0dGV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
+                                                listViewConstellationRecord
+                                                    .originalImage!,
                                                 width: 70,
                                                 height: 100,
                                                 fit: BoxFit.cover,

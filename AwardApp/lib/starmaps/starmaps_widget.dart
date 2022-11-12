@@ -149,8 +149,11 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Text(
-                                                dateTimeFormat(
-                                                    'M/d H:mm', datePicked),
+                                                valueOrDefault<String>(
+                                                  dateTimeFormat(
+                                                      'M/d H:mm', datePicked),
+                                                  '時間を変更してください',
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1

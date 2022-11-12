@@ -187,7 +187,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -220,8 +220,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -272,7 +272,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -305,8 +305,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -357,7 +357,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -390,8 +390,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -442,7 +442,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -475,8 +475,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -527,7 +527,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -560,8 +560,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -612,7 +612,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -645,8 +645,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -697,7 +697,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -730,8 +730,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -782,7 +782,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -815,8 +815,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -867,7 +867,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -900,8 +900,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -952,7 +952,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Colors.black,
+                                                                              Color(0xA4AFB8),
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -985,8 +985,8 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Colors
-                                                                        .black,
+                                                                    color: Color(
+                                                                        0xA4AFB8),
                                                                     size: 48,
                                                                   ),
                                                                 ],
