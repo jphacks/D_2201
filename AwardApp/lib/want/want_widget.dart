@@ -187,7 +187,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -220,8 +220,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -272,7 +273,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -305,8 +306,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -357,7 +359,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -390,8 +392,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -442,7 +445,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -475,8 +478,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -527,7 +531,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -560,8 +564,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -612,7 +617,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -645,8 +650,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -697,7 +703,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -730,8 +736,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -782,7 +789,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -815,8 +822,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -867,7 +875,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -900,8 +908,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
@@ -952,7 +961,7 @@ class _WantWidgetState extends State<WantWidget> {
                                                                           fontFamily:
                                                                               'Urbanist',
                                                                           color:
-                                                                              Color(0xA4AFB8),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               32,
                                                                           fontWeight:
@@ -985,8 +994,9 @@ class _WantWidgetState extends State<WantWidget> {
                                                                   FaIcon(
                                                                     FontAwesomeIcons
                                                                         .circle,
-                                                                    color: Color(
-                                                                        0xA4AFB8),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     size: 48,
                                                                   ),
                                                                 ],
