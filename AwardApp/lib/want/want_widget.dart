@@ -106,7 +106,7 @@ class _WantWidgetState extends State<WantWidget> {
                                           ),
                                           SelectionArea(
                                               child: Text(
-                                            'Stamps Card 1',
+                                            'Stamps Card',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
