@@ -4,7 +4,7 @@ echo "1.Repository update and Set at codefreeze"
 git checkout master
 git fetch origin master
 git reset --hard origin/master
-git checkout 30dd5efc2ac094b4b5034cf9db7b1d9e8eb12306
+git checkout 0505d036b3c14ce67570e27642216eb568e6c313
 
 echo "2.Build Flutter"
 cd ./AwardApp
