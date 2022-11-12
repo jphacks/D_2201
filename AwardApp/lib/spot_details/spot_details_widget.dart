@@ -203,27 +203,37 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                                             type: PageTransitionType.fade,
                                             child: FlutterFlowExpandedImageView(
                                               image: CachedNetworkImage(
-                                                imageUrl: widget
-                                                    .propertyRef!.mainImage!,
+                                                imageUrl:
+                                                    valueOrDefault<String>(
+                                                  widget.propertyRef!.mainImage,
+                                                  'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                                ),
                                                 fit: BoxFit.contain,
                                               ),
                                               allowRotation: false,
-                                              tag: widget
-                                                  .propertyRef!.mainImage!,
+                                              tag: valueOrDefault<String>(
+                                                widget.propertyRef!.mainImage,
+                                                'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                              ),
                                               useHeroAnimation: true,
                                             ),
                                           ),
                                         );
                                       },
                                       child: Hero(
-                                        tag: widget.propertyRef!.mainImage!,
+                                        tag: valueOrDefault<String>(
+                                          widget.propertyRef!.mainImage,
+                                          'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                        ),
                                         transitionOnUserGestures: true,
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(16),
                                           child: CachedNetworkImage(
-                                            imageUrl:
-                                                widget.propertyRef!.mainImage!,
+                                            imageUrl: valueOrDefault<String>(
+                                              widget.propertyRef!.mainImage,
+                                              'https://jphacks.github.io/D_2201/data/cc0images/publicdomainq-0066232.png',
+                                            ),
                                             width: double.infinity,
                                             height: double.infinity,
                                             fit: BoxFit.cover,
