@@ -61,79 +61,42 @@ class _GuideWidgetState extends State<GuideWidget> {
               initialIndex: 0,
               child: Column(
                 children: [
-                  TabBar(
-                    labelColor: FlutterFlowTheme.of(context).turquoise,
-                    unselectedLabelColor: FlutterFlowTheme.of(context).grayIcon,
-                    labelStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Urbanist',
-                          fontWeight: FontWeight.w500,
-                        ),
-                    indicatorColor: FlutterFlowTheme.of(context).turquoise,
-                    indicatorWeight: 4,
-                    tabs: [
-                      Tab(
-                        text: 'Reedme',
-                      ),
-                      Tab(
-                        text: 'Wiki',
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: TabBarView(
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFFFFF),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SelectionArea(
-                                  child: Text(
-                                'Hello World',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              )),
-                              FlutterFlowWebView(
-                                url:
-                                    'https://jphacks.github.io/D_2201/README.html',
-                                bypass: false,
-                                height: 640,
-                                verticalScroll: false,
-                                horizontalScroll: false,
-                              ),
-                            ],
-                          ),
+                        FlutterFlowWebView(
+                          url: 'https://jphacks.github.io/D_2201/README.html',
+                          bypass: false,
+                          height: 640,
+                          verticalScroll: false,
+                          horizontalScroll: false,
                         ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SelectionArea(
-                                  child: Text(
-                                'Hello World',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              )),
-                              FlutterFlowWebView(
-                                url: 'https://github.com/jphacks/D_2201',
-                                bypass: false,
-                                height: 640,
-                                verticalScroll: false,
-                                horizontalScroll: false,
-                              ),
-                            ],
-                          ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        FlutterFlowWebView(
+                          url: 'https://github.com/jphacks/D_2201',
+                          bypass: false,
+                          height: 640,
+                          verticalScroll: false,
+                          horizontalScroll: false,
                         ),
                       ],
                     ),
