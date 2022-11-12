@@ -80,6 +80,7 @@ class _MapsWidgetState extends State<MapsWidget> {
   @override
   Widget build(BuildContext context) {
     List<List> csvlist = globals.csvlist;
+    List<List> osakalist = globals.osakalist;
     List<List> cloudslist = globals.cloudslist;
     return Scaffold(
       key: scaffoldKey,
@@ -117,7 +118,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                       //マップの初期位置を指定
                       zoom: 10, //ズーム
                       target: GoogleMaps.LatLng(
-                          34.54919625630112, 135.5063116098694), //経度,緯度
+                          35.692596504940184, 139.75829208412094), //経度,緯度
                       bearing: 0.0),
                   myLocationEnabled: true, //現在位置をマップ上に表示
                   onMapCreated: (GoogleMaps.GoogleMapController controller) {
@@ -128,8 +129,8 @@ class _MapsWidgetState extends State<MapsWidget> {
                       markerId: (GoogleMaps.MarkerId('marker1')),
                       position: GoogleMaps.LatLng(
                           35.692596504940184, 139.75829208412094),
-                      infoWindow:
-                          GoogleMaps.InfoWindow(title: '一橋講堂', snippet: 'JPhacks会場'),
+                      infoWindow: GoogleMaps.InfoWindow(
+                          title: '一橋講堂', snippet: 'JPhacks会場'),
                     )
                   },
 
@@ -163,28 +164,75 @@ class _MapsWidgetState extends State<MapsWidget> {
                             'polygon2',
                           )),
                     for (int i = 0; i < 2664; i++) //光量
+                      if (i != 912 &&
+                          i != 913 &&
+                          i != 914 &&
+                          i != 915 &&
+                          i != 916 &&
+                          i != 917 &&
+                          i != 918 &&
+                          i != 919 &&
+                          i != 920 &&
+                          i != 921 &&
+                          i != 923)
+                        GoogleMaps.Polygon(
+                            strokeColor: Color.fromARGB(
+                                101 - double.parse(csvlist[i][5]).round(),
+                                255,
+                                255 - double.parse(csvlist[i][5]).round(),
+                                0), //Colors.pink.withOpacity(0.8), //線の色
+                            fillColor: Color.fromARGB(
+                                101 - double.parse(csvlist[i][5]).round(),
+                                255,
+                                255 - double.parse(csvlist[i][5]).round(),
+                                0), // Colors.pink.withOpacity(0.2), //塗りつぶし色
+                            strokeWidth: 2, //線の太さ
+                            points: [
+                              //ポリゴンで囲う地点
+                              GoogleMaps.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][4])),
+                              GoogleMaps.LatLng(double.parse(csvlist[i][2]),
+                                  double.parse(csvlist[i][3])),
+                              GoogleMaps.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][3])),
+                              GoogleMaps.LatLng(double.parse(csvlist[i][1]),
+                                  double.parse(csvlist[i][4])),
+                            ],
+                            polygonId: GoogleMaps.PolygonId(
+                              //一意なID
+                              'polygon1',
+                            )),
+                    for (int i = 0; i < 1250; i++) //大阪光量
                       GoogleMaps.Polygon(
                           strokeColor: Color.fromARGB(
-                              101 - double.parse(csvlist[i][5]).round(),
+                              101 -
+                                  (double.parse(osakalist[i][5]) / 2.55)
+                                      .round(),
                               255,
-                              255 - double.parse(csvlist[i][5]).round(),
+                              255 - (double.parse(osakalist[i][5]) / 5).round(),
                               0), //Colors.pink.withOpacity(0.8), //線の色
                           fillColor: Color.fromARGB(
-                              101 - double.parse(csvlist[i][5]).round(),
+                              101 -
+                                  (double.parse(osakalist[i][5]) / 2.55)
+                                      .round(),
                               255,
-                              255 - double.parse(csvlist[i][5]).round(),
+                              255 - (double.parse(osakalist[i][5]) / 5).round(),
                               0), // Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
                           points: [
                             //ポリゴンで囲う地点
-                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                double.parse(csvlist[i][4])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][2]),
-                                double.parse(csvlist[i][3])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                double.parse(csvlist[i][3])),
-                            GoogleMaps.LatLng(double.parse(csvlist[i][1]),
-                                double.parse(csvlist[i][4])),
+                            GoogleMaps.LatLng(
+                                double.parse(osakalist[i][2]) + 0.004,
+                                double.parse(osakalist[i][4]) + 0.004),
+                            GoogleMaps.LatLng(
+                                double.parse(osakalist[i][2]) + 0.004,
+                                double.parse(osakalist[i][3]) - 0.004),
+                            GoogleMaps.LatLng(
+                                double.parse(osakalist[i][1]) - 0.004,
+                                double.parse(osakalist[i][3]) - 0.004),
+                            GoogleMaps.LatLng(
+                                double.parse(osakalist[i][1]) - 0.004,
+                                double.parse(osakalist[i][4]) + 0.004),
                           ],
                           polygonId: GoogleMaps.PolygonId(
                             //一意なID

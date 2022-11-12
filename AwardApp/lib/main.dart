@@ -20,6 +20,7 @@ import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' show parse;
+import 'package:geolocator/geolocator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,18 @@ void main() async {
       if (rows[0] != "index") {
         if (int.parse(rows[0]) % 2 == 0) {
           globals.csvlist.add(rows);
+        }
+      }
+    }
+    // print(count);
+  });
+
+  rootBundle.loadString('assets/csv/osaka-score1.csv').then((String csv) {
+    for (String line in csv.split('\n')) {
+      List rows = line.split(','); // split by comma
+      if (rows[0] != "index") {
+        if (int.parse(rows[0]) % 2 == 0) {
+          globals.osakalist.add(rows);
         }
       }
     }
@@ -86,6 +99,15 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
+    //位置情報が許可されていない時に許可をリクエストする
+    Future(() async {
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        await Geolocator.requestPermission();
+      }
+    });
+
     _appStateNotifier = AppStateNotifier();
     _router = createRouter(_appStateNotifier);
     userStream = jphacksFirebaseUserStream()

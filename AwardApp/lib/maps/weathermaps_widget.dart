@@ -80,6 +80,7 @@ class _MapsWidgetState extends State<MapsWidget> {
   @override
   Widget build(BuildContext context) {
     List<List> csvlist = globals.csvlist;
+    List<List> osakalist = globals.osakalist;
     List<List> cloudslist = globals.cloudslist;
     return Scaffold(
       key: scaffoldKey,
@@ -134,21 +135,23 @@ class _MapsWidgetState extends State<MapsWidget> {
                   },
 
                   polygons: {
-                    for (int i = 0; i < 2664; i++) //光量
+                    for (int i = 0; i < 1250; i++) //大阪光量
                       GoogleMaps.Polygon(
                           strokeColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
+                                  double.parse(osakalist[i][5]).round(),
                                   255,
-                                  255 - double.parse(csvlist[i][5]).round(),
+                                  255 - double.parse(osakalist[i][5]).round(),
                                   0)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                              .withOpacity(double.parse(osakalist[i][5])
+                                      .round() /
                                   255), //Colors.pink.withOpacity(0.8), //線の色
                           fillColor: Color.fromARGB(
-                                  double.parse(csvlist[i][5]).round(),
+                                  double.parse(osakalist[i][5]).round(),
                                   255,
-                                  255 - double.parse(csvlist[i][5]).round(),
+                                  255 - double.parse(osakalist[i][5]).round(),
                                   0)
-                              .withOpacity(double.parse(csvlist[i][5]).round() /
+                              .withOpacity(double.parse(osakalist[i][5])
+                                      .round() /
                                   255), // Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
                           points: [
@@ -201,6 +204,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                             'polygon2',
                           )),
                   },
+
                   tileOverlays: {
                     GoogleMaps.TileOverlay(
                       //表示するタイルのProvider(別途作成する)
