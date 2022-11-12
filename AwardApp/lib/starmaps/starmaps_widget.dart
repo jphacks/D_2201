@@ -386,10 +386,18 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 0),
-                                                child: Icon(
-                                                  Icons.north_east_sharp,
-                                                  color: Color(0xFF57636C),
-                                                  size: 48,
+                                                child: Transform.rotate(
+                                                  angle:
+                                                      (listViewConstellationRecord
+                                                                  .directionNum! -
+                                                              45) *
+                                                          pi /
+                                                          180,
+                                                  child: Icon(
+                                                    Icons.north_east_sharp,
+                                                    color: Color(0xFF57636C),
+                                                    size: 48,
+                                                  ),
                                                 ),
                                               ),
                                               Padding(
