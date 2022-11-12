@@ -825,7 +825,7 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                            child: Text(
+                            /* child: Text(
                               'from here',
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
@@ -835,7 +835,7 @@ class _WantSpotDetailsWidgetState extends State<WantSpotDetailsWidget>
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                            ),
+                            ), */
                           ),
                         ],
                       ),

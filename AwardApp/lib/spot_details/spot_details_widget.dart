@@ -821,7 +821,7 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                            child: Text(
+                            /* child: Text(
                               'from here',
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
@@ -830,8 +830,8 @@ class _SpotDetailsWidgetState extends State<SpotDetailsWidget>
                                     color: Color(0xFF8B97A2),
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
-                                  ),
-                            ),
+                              ),
+                            ), */
                           ),
                         ],
                       ),
