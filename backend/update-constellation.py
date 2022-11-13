@@ -54,7 +54,7 @@ for id in range(1,89):
     id2img[id] = url
     print(starname[id-1])
   else: #画像が無い場合
-    url = "https://jphacks.github.io/D_2201/data/とっとこ公大郎.png"
+    url = "https://jphacks.github.io/D_2201/data/constellation_compressed/NoImage.png"
     id2img[id] = url
 
 # データ取得＆書き込み
