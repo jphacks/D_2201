@@ -48,13 +48,13 @@ starlist = pd.read_csv("https://jphacks.github.io/D_2201/data/starlist.csv")
 starname = list(starlist['name'])
 id2img = {}
 for id in range(1,89):
-  url = "https://jphacks.github.io/D_2201/data/constellation/" + starname[id-1] + "座.png"
+  url = "https://jphacks.github.io/D_2201/data/constellation_compressed/" + starname[id-1] + "座.png"
   res = requests.get(url)
   if res.status_code == 200:
     id2img[id] = url
     print(starname[id-1])
   else: #画像が無い場合
-    url = "https://jphacks.github.io/D_2201/data/とっとこ公大郎.png"
+    url = "https://jphacks.github.io/D_2201/data/constellation_compressed/NoImage.png"
     id2img[id] = url
 
 # データ取得＆書き込み
