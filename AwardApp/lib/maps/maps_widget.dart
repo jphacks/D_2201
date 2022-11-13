@@ -185,14 +185,16 @@ class _MapsWidgetState extends State<MapsWidget> {
                                   (double.parse(osakalist[i][5]) / 2.55)
                                       .round(),
                               255,
-                              255 - (double.parse(osakalist[i][5]) / 5).round(),
+                              255 -
+                                  (double.parse(osakalist[i][5]) / 20).round(),
                               0), //Colors.pink.withOpacity(0.8), //線の色
                           fillColor: Color.fromARGB(
                               101 -
                                   (double.parse(osakalist[i][5]) / 2.55)
                                       .round(),
                               255,
-                              255 - (double.parse(osakalist[i][5]) / 5).round(),
+                              255 -
+                                  (double.parse(osakalist[i][5]) / 20).round(),
                               0), // Colors.pink.withOpacity(0.2), //塗りつぶし色
                           strokeWidth: 2, //線の太さ
                           points: [

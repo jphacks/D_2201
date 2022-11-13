@@ -62,8 +62,8 @@ class _GuideWidgetState extends State<GuideWidget> {
               child: Column(
                 children: [
                   Container(
-                    width: 100,
-                    height: 100,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
                     decoration: BoxDecoration(
                       color: Color(0xFFFFFFFF),
                     ),
@@ -82,8 +82,8 @@ class _GuideWidgetState extends State<GuideWidget> {
                     ),
                   ),
                   Container(
-                    width: 100,
-                    height: 100,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
                     ),
