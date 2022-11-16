@@ -105,4 +105,5 @@ https://user-images.githubusercontent.com/67728848/197405802-9c2dc014-ccba-49fe-
 人工衛星を開発運用しているチームとして、これからも衛星が人々にもたらす利点をより追究したいなと思っております。
 
 
+### Award Day 発表スライド
 [JPhacks D_2201.pptx](https://github.com/jphacks/D_2201/files/10007905/JPhacks.D_2201.pptx)
