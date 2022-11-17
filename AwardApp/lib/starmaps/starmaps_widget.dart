@@ -308,7 +308,7 @@ class _StarmapsWidgetState extends State<StarmapsWidget> {
                                               child: Image.network(
                                                 listViewConstellationRecord
                                                     .originalImage!,
-                                                width: 70,
+                                                width: 80,
                                                 height: 100,
                                                 fit: BoxFit.cover,
                                               ),
