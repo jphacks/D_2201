@@ -11,7 +11,7 @@
 <img src="https://jphacks.github.io/D_2201/data/とっとこ公大郎_背景透過.png" height="100px"> 
 
 
-web上でデモをご覧いただけます(スマホブラウザでの利用を想定しています) ：https://lfs-d2201.ashandf.net/
+web上でデモをご覧いただけます(スマホブラウザでの利用を想定しています) ： https://github.com/OMUhumhum/D_2201_web#look-for-stars-d_2201-web-archive
 *)現在はデモを改良し、 マップの色が動画と異なっています。デモでは緑色の部分で星が見えやすく、赤色になるにつれ星が見えにくくなることを示しています。
 
 
