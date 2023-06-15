@@ -68,7 +68,7 @@ https://user-images.githubusercontent.com/67728848/197405802-9c2dc014-ccba-49fe-
 * 天気API(OpenWeatherMap)
 * JLL様提供土地利用データ
 * エアロゾル光学的厚さAPI(人工衛星"しきさい")
-* MapQuest提供API
+* MapQuest様提供API
 * 地球観測衛星Sentinel-2 取得データ
 
 #### フレームワーク・ライブラリ・モジュール
